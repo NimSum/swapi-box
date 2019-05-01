@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardContainer } from '../SectionContainers/CardContainer';
+import { Header } from '../SectionContainers/Header';
 
 class App extends Component {
   constructor() {
@@ -21,11 +22,14 @@ class App extends Component {
   }
 
   render() {
+    const { opening_crawl, title, release_date } = this.state.selectedMovie;
+
     return (
       <div className="App">
-        <p>HI</p>
+        < Header 
+          title = { title }/>
         < CardContainer 
-          {...this.state.selectedMovie}/>
+          opening = { opening_crawl }/>
       </div>
     )
   }
