@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 export const Header = ({ title }) => {
   return (
     <header>
@@ -11,5 +12,5 @@ export const Header = ({ title }) => {
 }
 
 Header.propTypes = {
-  subTitle: PropTypes.string
+  title: PropTypes.string
 }

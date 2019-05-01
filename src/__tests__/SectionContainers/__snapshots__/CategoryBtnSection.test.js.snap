@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category Button Section Should match component snapshot 1`] = `
+<section
+  className="categories-container"
+>
+  <PlanetsBtn
+    activeBtn=""
+    setActive={[Function]}
+  />
+  <PeopleBtn
+    activeBtn=""
+    setActive={[Function]}
+  />
+  <VehiclesBtn
+    activeBtn=""
+    setActive={[Function]}
+  />
+</section>
+`;

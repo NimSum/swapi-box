@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { CardContainer } from '../SectionContainers/CardContainer';
 import { Header } from '../SectionContainers/Header';
+import CategoryBtnSection from '../SectionContainers/CategoryBtnSection';
+
 
 class App extends Component {
   constructor() {
@@ -13,12 +15,12 @@ class App extends Component {
 
   componentDidMount() {
     fetch('https://swapi.co/api/films')
-      .then(response => response.json())
-      .then(result => 
-          this.setState({ selectedMovie: result.results
-            .sort(() => Math.random() - 0.5)
-            .pop() }))
-      .catch(error => console.log(error) )
+    .then(response => response.json())
+    .then(films => this.setState(
+      { selectedMovie: films.results
+        .sort(() => Math.random() - 0.5)
+        .pop()}))
+    .catch(error => console.log(error) )
   }
 
   render() {
@@ -30,6 +32,7 @@ class App extends Component {
           title = { title }/>
         < CardContainer 
           opening = { opening_crawl }/>
+        < CategoryBtnSection />
       </div>
     )
   }
