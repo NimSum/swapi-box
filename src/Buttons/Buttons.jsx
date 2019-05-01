@@ -1,30 +1,42 @@
 import React from 'react';
 
-export const PeopleBtn= () => {
+export const PeopleBtn= ({setActive, activeBtn}) => {
   return (
     <button 
       type="button"
-      className="category-button">
+      className={`${activeBtn === "people" 
+        ? "active category-btn"
+        : "category-btn"}`}
+      name="people"
+      onClick={ setActive }>
       People
     </button>
   )
 }
 
-export const PlanetsBtn = () => {
+export const PlanetsBtn = ({setActive, activeBtn}) => {
   return (
     <button 
       type="button"
-      className="category-button">
+      className={`${activeBtn === "planets" 
+        ? "active category-btn"
+        : "category-btn"}`}
+      name="planets"
+      onClick={ setActive }>
       Planets
     </button>
   )
 }
 
-export const VehiclesBtn = () => {
+export const VehiclesBtn = ({setActive, activeBtn}) => {
   return (
     <button 
       type="button"
-      className="category-button">
+      className={`${activeBtn === "vehicles" 
+        ? "active category-btn"
+        : "category-btn"}`}
+      name="vehicles"
+      onClick={ setActive }>
       Vehicles
     </button>
   )
@@ -34,7 +46,8 @@ export const ViewFavoritesBtn = ({ total }) => {
   return (
     <button 
       type="button"
-      className="people-button">
+      className="people-button"
+      name="favorites">
       Favorites 
       <span className="fav-total">{ total }</span>
     </button>
@@ -45,8 +58,20 @@ export const HomeBtn = () => {
   return (
     <button 
       type="button"
-      className="home-button">
+      className="home-button"
+      name="home">
       Home
+    </button>
+  )
+}
+
+export const FavoriteCardBtn = () => {
+  return (
+    <button 
+      type="button"
+      className="favorite-card-button"
+      name="favorite-card">
+      Favorite This, change to image logo
     </button>
   )
 }
