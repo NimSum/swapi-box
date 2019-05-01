@@ -10,7 +10,8 @@ export class CategoryBtnSection extends Component {
   }
 
   setActiveBtn = e => {
-    this.setState({ activeBtn: e.target.name })
+    this.setState({ activeBtn: e.target.name });
+    this.props.changeCategory(e.target.name);
   }
 
   render() {

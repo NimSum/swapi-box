@@ -10,7 +10,8 @@ class App extends Component {
     super();
     this.state = {
       selectedMovie: {},
-      loading: false
+      loading: false,
+      categorySelected: ''
     }
   }
 
@@ -21,18 +22,22 @@ class App extends Component {
       .catch(error => console.log(error) )
   }
 
+  changeCategory = category => {
+    this.setState({ categorySelected: category });
+  }
 
 
   render() {
     const { opening_crawl, title, release_date } = this.state.selectedMovie;
-    
+
     return (
       <div className="App">
         < Header 
           title = { title }/>
         < CardContainer 
           { ...this.state.selectedMovie } />
-        < CategoryBtnSection />
+        < CategoryBtnSection 
+          changeCategory={ this.changeCategory }/>
       </div>
     )
   }
