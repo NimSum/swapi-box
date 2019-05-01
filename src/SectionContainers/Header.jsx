@@ -11,5 +11,5 @@ export const Header = ({ title }) => {
 }
 
 Header.propTypes = {
-  subTitle: PropTypes.string
+  title: PropTypes.string
 }
