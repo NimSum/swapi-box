@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CardContainer } from '../SectionContainers/CardContainer';
 import { Header } from '../SectionContainers/Header';
 import CategoryBtnSection from '../SectionContainers/CategoryBtnSection';
+import { fetchRandomMovie } from '../ApiCalls/apiFetches';
 
 
 class App extends Component {
@@ -14,24 +15,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://swapi.co/api/films')
-    .then(response => response.json())
-    .then(films => this.setState(
-      { selectedMovie: films.results
-        .sort(() => Math.random() - 0.5)
-        .pop()}))
-    .catch(error => console.log(error) )
+    const randomMovieId = Math.floor(Math.random() * 7) + 1;
+    fetchRandomMovie(randomMovieId)
+      .then(film => this.setState({ selectedMovie: film }))
+      .catch(error => console.log(error) )
   }
+
+
 
   render() {
     const { opening_crawl, title, release_date } = this.state.selectedMovie;
-
+    
     return (
       <div className="App">
         < Header 
           title = { title }/>
         < CardContainer 
-          opening = { opening_crawl }/>
+          { ...this.state.selectedMovie } />
         < CategoryBtnSection />
       </div>
     )
