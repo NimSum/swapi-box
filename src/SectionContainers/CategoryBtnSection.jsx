@@ -15,6 +15,7 @@ export class CategoryBtnSection extends Component {
 
   render() {
     const { activeBtn } = this.state;
+
     return (
       <section className="categories-container">
         < PlanetsBtn 

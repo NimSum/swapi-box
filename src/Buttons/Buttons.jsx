@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const PeopleBtn= ({setActive, activeBtn}) => {
   return (
@@ -74,4 +75,26 @@ export const FavoriteCardBtn = () => {
       Favorite This, change to image logo
     </button>
   )
+}
+
+PeopleBtn.propTypes = {
+  setActive: PropTypes.func,
+  activeBtn: PropTypes.string
+}
+PlanetsBtn.propTypes = {
+  setActive: PropTypes.func,
+  activeBtn: PropTypes.string
+}
+VehiclesBtn.propTypes = {
+  setActive: PropTypes.func,
+  activeBtn: PropTypes.string
+}
+ViewFavoritesBtn.propTypes = {
+  
+}
+HomeBtn.propTypes = {
+  
+}
+FavoriteCardBtn.propTypes = {
+  
 }
