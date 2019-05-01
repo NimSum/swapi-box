@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { CardContainer } from '../SectionContainers/CardContainer';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectedMovie: '',
+      selectedMovie: {},
       loading: false
     }
   }
@@ -14,8 +15,8 @@ class App extends Component {
       .then(response => response.json())
       .then(result => 
           this.setState({ selectedMovie: result.results
-            .sort(() => Math.random() - 0.5).pop()
-            }))
+            .sort(() => Math.random() - 0.5)
+            .pop() }))
       .catch(error => console.log(error) )
   }
 
@@ -23,6 +24,8 @@ class App extends Component {
     return (
       <div className="App">
         <p>HI</p>
+        < CardContainer 
+          {...this.state.selectedMovie}/>
       </div>
     )
   }
