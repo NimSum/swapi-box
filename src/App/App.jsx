@@ -89,7 +89,7 @@ class App extends Component {
       <div className="App">
         < Header />
         < CardContainer 
-          { ...this.state.selectedMovie }
+          movie = { this.state.selectedMovie }
           cards={ this.state.renderCards }
           category={ this.state.categorySelected }
           updateFavoriteCount={ this.updateFavoriteCount } />
