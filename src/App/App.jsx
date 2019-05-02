@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { CardContainer } from '../SectionContainers/CardContainer';
 import { Header } from '../SectionContainers/Header';
 import CategoryBtnSection from '../SectionContainers/CategoryBtnSection';
-import { fetchRandomMovie, fetchPeople, fetchItem } from '../ApiCalls/apiFetches';
-
+import { fetchRandomMovie, fetchCategory, fetchItem } from '../ApiCalls/apiFetches';
+const uuidv4 = require('uuid/v4');
 
 class App extends Component {
   constructor() {
@@ -29,20 +29,20 @@ class App extends Component {
   }
 
   fetchPeople = () => {
-    fetchPeople()
+    fetchCategory('people')
       .then(people => {
-        const info = people.map(person => {
+        people.forEach(person => {
           const homeworldInfo = fetchItem(person.homeworld)
-            .then(world => ({worldName: world.name, population: world.population}));
+            .then(world => ({homeworld: world.name, population: world.population}));
           const species = fetchItem(...person.species)
             .then(species => ({ species: species.name }));
-          return Promise.all([homeworldInfo, species, { name: person.name}])
+          Promise.all([homeworldInfo, species, { name: person.name, id: uuidv4() }])
             .then(characterInfo => Object.assign(
               characterInfo[0],
               characterInfo[1],
               characterInfo[2]))
+            .then(result => this.setState({renderCards: this.state.renderCards.concat(result)}))
         })
-        Promise.all(info).then(renderCards => this.setState({ renderCards }));
       });
   }
 
@@ -63,7 +63,7 @@ class App extends Component {
           title = { title }/>
         < CardContainer 
           { ...this.state.selectedMovie }
-          { ...this.state.renderCards } />
+          cards={ this.state.renderCards } />
         < CategoryBtnSection 
           changeCategory={ this.changeCategory }/>
       </div>

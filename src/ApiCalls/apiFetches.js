@@ -8,8 +8,8 @@ export const fetchRandomMovie = filmId =>
       }
     })
 
-export const fetchPeople = () => 
-  fetch(`https://swapi.co/api/people/`)
+export const fetchCategory = category => 
+  fetch(`https://swapi.co/api/${category}/`)
     .then(response => {
       if (!response.ok) {
         throw Error('Error fetching movies')
@@ -17,7 +17,7 @@ export const fetchPeople = () =>
         return response.json()
       }
     })
-    .then(characters => characters.results)
+    .then(result => result.results)
 
 export const fetchItem = url => 
   fetch(url)
