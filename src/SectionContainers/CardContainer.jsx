@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Crawl from 'react-star-wars-crawl';
 import { CharacterCard } from '../components/Cards/CharacterCard';
 import { PlanetCard } from '../components/Cards/PlanetCard';
+import { VehicleCard } from '../components/Cards/VehicleCard';
 
 export const CardContainer = ({ opening_crawl, title, release_date, episode_id, cards, category }) => {
   const romanNumeral = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII']
@@ -16,7 +17,8 @@ export const CardContainer = ({ opening_crawl, title, release_date, episode_id, 
     ? (<div className="crawl-container">{crawl}</div>)
     : (<section className="card-container">
         { category === 'people' && < CharacterCard cards={ cards } /> }
-        { category === 'planets' && < PlanetCard cards={ cards } /> }
+        { category === 'planets' && < PlanetCard cards={ cards } /> } 
+        { category === 'vehicles' && < VehicleCard cards={ cards } /> }
       </section>)
 }
 

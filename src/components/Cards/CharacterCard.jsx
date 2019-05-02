@@ -7,10 +7,10 @@ export const CharacterCard = ({ cards }) =>
     <article key={ character.id } className="character-card">
       < FavoriteCardBtn />
       <h3>{ character.name }</h3>
-      <h4>{ character.species }</h4>
+      <h4>{ character.speciesName }</h4>
       <div className="home-planet">
-        <h4>{ character.homeworld }</h4>
-        <p>{ character.population }</p>
+        <h4>{ character.worldName }</h4>
+        <p>{ character.worldPopulation }</p>
       </div>
     </article>
   ))
