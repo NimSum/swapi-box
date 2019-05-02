@@ -43,9 +43,7 @@ export const VehiclesBtn = ({setActive, activeBtn}) => {
   )
 }
 
-export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount, renderFavorites }) => {
-
-  return (
+export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     <button 
       type="button"
       className={`${activeBtn === "favorites" 
@@ -58,9 +56,6 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount, renderFa
       { favoriteCount > 0 && (<span className="fav-total">{ favoriteCount }</span>) }
     </button>
   )
-}
-
-
 
 export const HomeBtn = () => {
   return (
