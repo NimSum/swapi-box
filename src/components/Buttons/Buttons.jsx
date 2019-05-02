@@ -44,10 +44,6 @@ export const VehiclesBtn = ({setActive, activeBtn}) => {
 }
 
 export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount, renderFavorites }) => {
-  const showFavorites = e => {
-    setActive(e);
-    // renderFavorites();
-  }
 
   return (
     <button 
@@ -55,10 +51,11 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount, renderFa
       className={`${activeBtn === "favorites" 
       ? "active category-btn"
       : "category-btn"}`}
-      onClick={ showFavorites }
-      name="favorites">
-      Favorites 
-      <span className="fav-total">{ favoriteCount }</span>
+      onClick={ setActive }
+      name="favorites"
+      disabled={ !favoriteCount > 0 ? true : false }>
+      { !favoriteCount > 0 ? 'No favorites' : 'Favorites' }
+      { favoriteCount > 0 && (<span className="fav-total">{ favoriteCount }</span>) }
     </button>
   )
 }
