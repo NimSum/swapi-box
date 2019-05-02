@@ -24,8 +24,10 @@ class App extends Component {
   }
 
   changeCategory = category => {
-    this.setState({ categorySelected: category });
+    this.setState({ categorySelected: category, renderCards: [] });
     category === 'people' && this.fetchPeople();
+    category === 'planets' && this.fetchPlanets();
+    category === 'vehicles' && this.fetchVehicles();
   }
 
   fetchPeople = () => {
@@ -33,25 +35,41 @@ class App extends Component {
       .then(people => {
         people.forEach(person => {
           const homeworldInfo = fetchItem(person.homeworld)
-            .then(world => ({homeworld: world.name, population: world.population}));
-          const species = fetchItem(...person.species)
-            .then(species => ({ species: species.name }));
-          Promise.all([homeworldInfo, species, { name: person.name, id: uuidv4() }])
-            .then(characterInfo => Object.assign(
-              characterInfo[0],
-              characterInfo[1],
-              characterInfo[2]))
-            .then(result => this.setState({renderCards: this.state.renderCards.concat(result)}))
+            .then(world => ({ worldName: world.name, worldPopulation: world.population }));
+          const speciesInfo = fetchItem(...person.species)
+            .then(species => ({ speciesName: species.name }));
+          Promise.all([ homeworldInfo, speciesInfo ])
+            .then(characterInfo => {
+              const card = { ...characterInfo[0], ...characterInfo[0] , ...person, id: uuidv4() }
+              const renderCards = [ ...this.state.renderCards, card ]
+              this.setState({ renderCards })
+            })
         })
       });
   }
 
   fetchPlanets = () => {
-    console.log('hi')
+    fetchCategory('planets')
+      .then(planets => planets.forEach(planet => {
+        const names = planet.residents.map(resident => 
+          fetchItem(resident)
+            .then(person => ({ name: person.name, id: uuidv4() })));
+        Promise.all([...names])
+          .then(names => {
+            const card = ({ residentNames: names, ...planet, id: uuidv4() })
+            const renderCards = [...this.state.renderCards, card]
+            this.setState({ renderCards })
+          })
+      }))
   }
 
   fetchVehicles = () => {
-    console.log('hi')
+    fetchCategory('vehicles')
+    .then(vehicles => vehicles.forEach(vehicle => {
+      const vehicleCard = { ...vehicle, id: uuidv4() }
+      const renderCards = [...this.state.renderCards, vehicleCard ]
+      this.setState({ renderCards })
+    }));
   }
 
   render() {
@@ -60,7 +78,8 @@ class App extends Component {
         < Header />
         < CardContainer 
           { ...this.state.selectedMovie }
-          cards={ this.state.renderCards } />
+          cards={ this.state.renderCards }
+          category={ this.state.categorySelected } />
         < CategoryBtnSection 
           changeCategory={ this.changeCategory }/>
       </div>
