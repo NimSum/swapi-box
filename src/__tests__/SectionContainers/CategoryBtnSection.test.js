@@ -3,11 +3,14 @@ import { shallow } from 'enzyme';
 import CategoryBtnSection from '../../SectionContainers/CategoryBtnSection';
 
 describe('Category Button Section', () => {
+  const mockChangeCategory = jest.fn();
 
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      < CategoryBtnSection />
+      < CategoryBtnSection 
+        changeCategory={mockChangeCategory}
+      />
     );
   });
 

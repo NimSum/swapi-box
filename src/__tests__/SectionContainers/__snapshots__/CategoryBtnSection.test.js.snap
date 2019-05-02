@@ -2,19 +2,23 @@
 
 exports[`Category Button Section Should match component snapshot 1`] = `
 <section
-  className="categories-container"
+  className="categories-btn-container"
 >
-  <PlanetsBtn
-    activeBtn=""
-    setActive={[Function]}
-  />
-  <PeopleBtn
-    activeBtn=""
-    setActive={[Function]}
-  />
-  <VehiclesBtn
-    activeBtn=""
-    setActive={[Function]}
-  />
+  <div
+    className="btn-container"
+  >
+    <PlanetsBtn
+      activeBtn=""
+      setActive={[Function]}
+    />
+    <PeopleBtn
+      activeBtn=""
+      setActive={[Function]}
+    />
+    <VehiclesBtn
+      activeBtn=""
+      setActive={[Function]}
+    />
+  </div>
 </section>
 `;

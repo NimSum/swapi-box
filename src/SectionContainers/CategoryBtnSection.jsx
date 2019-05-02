@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { PlanetsBtn, PeopleBtn, VehiclesBtn } from '../Buttons/Buttons';
+import { PlanetsBtn, PeopleBtn, VehiclesBtn } from '../components/Buttons/Buttons';
 
 export class CategoryBtnSection extends Component {
   constructor() {
