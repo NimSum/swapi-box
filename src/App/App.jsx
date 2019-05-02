@@ -55,12 +55,9 @@ class App extends Component {
   }
 
   render() {
-    const { opening_crawl, title, release_date } = this.state.selectedMovie;
-
     return (
       <div className="App">
-        < Header 
-          title = { title }/>
+        < Header />
         < CardContainer 
           { ...this.state.selectedMovie }
           cards={ this.state.renderCards } />
