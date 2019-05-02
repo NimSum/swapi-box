@@ -15,18 +15,28 @@ export const CardContainer = ({ opening_crawl, title, release_date, episode_id, 
       releaseYear={ release_date }
     />)
   
+  const cardElements = cards.map(card => {
+    let result;
+    switch(true) {
+      case card.type === 'character':
+      result = (< CharacterCard card={ card } 
+        updateFavoriteCount={updateFavoriteCount} />)
+      break;
+      case card.type === 'planet':
+      result = (< PlanetCard card={ card } 
+        updateFavoriteCount={updateFavoriteCount} />)
+      break;
+      default:
+      result = (< VehicleCard card={ card } 
+        updateFavoriteCount={updateFavoriteCount} />)
+    }
+    return result;
+  })
+
   return !cards.length
     ? (<div className="crawl-container">{crawl}</div>)
     : (<section className="card-container">
-        { category === 'people' && 
-          < CharacterCard cards={ cards } 
-            updateFavoriteCount={updateFavoriteCount} /> }
-        { category === 'planets' && 
-          < PlanetCard cards={ cards } 
-            updateFavoriteCount={updateFavoriteCount} /> } 
-        { category === 'vehicles' && 
-          < VehicleCard cards={ cards } 
-            updateFavoriteCount={updateFavoriteCount} /> }
+        { cardElements }
       </section>)
 }
 

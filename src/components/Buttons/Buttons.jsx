@@ -90,8 +90,7 @@ export class FavoriteCardBtn extends Component {
   }
 
   saveCard = (storedCopy) => {
-    const cardWithType = { ...this.props.card, type: this.props.type }
-    const updatedCopy = storedCopy.concat([ cardWithType ]);
+    const updatedCopy = storedCopy.concat([ this.props.card ]);
     localStorage.setItem('favorites', JSON.stringify(updatedCopy));
     this.props.updateFavoriteCount()
   }
