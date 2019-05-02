@@ -1,11 +1,12 @@
 import React from 'react';
 import { FavoriteCardBtn } from '../Buttons/Buttons';
 
-export const VehicleCard = ({ cards }) => 
+export const VehicleCard = ({ cards, updateFavoriteCount }) => 
   cards.map(vehicle => (
     <article className="vehicle-card">
       < FavoriteCardBtn 
-        item={ vehicle }
+        card={ vehicle }
+        updateFavoriteCount={updateFavoriteCount}
         type="vehicle" />
       <h3>{ vehicle.name }</h3>
       <div className="vehicle-specs">

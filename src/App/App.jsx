@@ -12,15 +12,26 @@ class App extends Component {
       selectedMovie: {},
       loading: false,
       categorySelected: '',
-      renderCards: []
+      renderCards: [],
     }
   }
 
   componentDidMount() {
     const randomMovieId = Math.floor(Math.random() * 7) + 1;
+    this.updateFavoriteCount();
     fetchRandomMovie(randomMovieId)
       .then(film => this.setState({ selectedMovie: film }))
       .catch(error => console.log(error) )
+  }
+
+  updateFavoriteCount = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    this.setState({ favoriteCount: favorites.length })
+  }
+
+  renderFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    console.log(favorites)
   }
 
   changeCategory = category => {
@@ -28,6 +39,7 @@ class App extends Component {
     category === 'people' && this.fetchPeople();
     category === 'planets' && this.fetchPlanets();
     category === 'vehicles' && this.fetchVehicles();
+    category === 'favorites' && this.renderFavorites();
   }
 
   fetchPeople = () => {
@@ -79,9 +91,12 @@ class App extends Component {
         < CardContainer 
           { ...this.state.selectedMovie }
           cards={ this.state.renderCards }
-          category={ this.state.categorySelected } />
+          category={ this.state.categorySelected }
+          updateFavoriteCount={ this.updateFavoriteCount } />
         < CategoryBtnSection 
-          changeCategory={ this.changeCategory }/>
+          changeCategory={ this.changeCategory }
+          favoriteCount={ this.state.favoriteCount }
+          updateFavoriteCount={ this.props.updateFavoriteCount } />
       </div>
     )
   }

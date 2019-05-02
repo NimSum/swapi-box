@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FavoriteCardBtn } from '../Buttons/Buttons';
 
-export const CharacterCard = ({ cards }) => 
+export const CharacterCard = ({ cards, updateFavoriteCount }) => 
   cards.map(character => (
     <article key={ character.id } className="character-card">
-      < FavoriteCardBtn />
+      < FavoriteCardBtn 
+       card={ character }
+       updateFavoriteCount={updateFavoriteCount}
+       type="character"/>
       <h3>{ character.name }</h3>
       <h4>{ character.speciesName }</h4>
       <div className="home-planet">
