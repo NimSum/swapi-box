@@ -1,4 +1,5 @@
 import React from 'react';
+import { FavoriteCardBtn } from '../Buttons/Buttons';
 
 export const PlanetCard = ({ cards }) => 
 // Name
@@ -9,6 +10,7 @@ export const PlanetCard = ({ cards }) =>
 // A button to “Favorite” the planet
   cards.map(planet => (
     <article key={ planet.id } className="planet-card">
+      < FavoriteCardBtn />
       <h3>{ planet.name }</h3>
       <p>{ planet.terrain }</p>
       <p>{ planet.climate }</p>      

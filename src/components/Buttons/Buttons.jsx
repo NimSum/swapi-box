@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export const PeopleBtn= ({setActive, activeBtn}) => {
@@ -66,15 +66,24 @@ export const HomeBtn = () => {
   )
 }
 
-export const FavoriteCardBtn = () => {
-  return (
-    <button 
-      type="button"
-      className="favorite-card-button"
-      name="favorite-card">
-      Favorite This, change to image logo
-    </button>
-  )
+export class FavoriteCardBtn extends Component {
+  constructor() {
+    super();
+    this.state = {
+      active: false
+    }
+  }
+
+  render() {
+    return (
+      <button 
+        type="button"
+        className="favorite-card-button"
+        name="favorite-card">
+        Favorite This, change to image logo
+      </button>
+    )
+  } 
 }
 
 PeopleBtn.propTypes = {

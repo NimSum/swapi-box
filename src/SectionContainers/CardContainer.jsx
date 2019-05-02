@@ -7,11 +7,13 @@ import { VehicleCard } from '../components/Cards/VehicleCard';
 
 export const CardContainer = ({ opening_crawl, title, release_date, episode_id, cards, category }) => {
   const romanNumeral = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII']
-  const crawl = (< Crawl
-    title={ `Episode ${romanNumeral[episode_id - 1]}` }
-    subTitle={ title }
-    text={ opening_crawl }
-    releaseYear={ release_date }/>)
+  const crawl = (
+    < Crawl
+      title={ `Episode ${romanNumeral[episode_id - 1]}` }
+      subTitle={ title }
+      text={ opening_crawl }
+      releaseYear={ release_date }
+    />)
   
   return !cards.length
     ? (<div className="crawl-container">{crawl}</div>)
@@ -27,5 +29,6 @@ CardContainer.propTypes = {
   title: PropTypes.string,
   release_date: PropTypes.string,
   episode_id: PropTypes.number,
-  cards: PropTypes.array
+  cards: PropTypes.array,
+  category: PropTypes.string
 }
