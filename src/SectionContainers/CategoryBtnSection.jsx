@@ -18,16 +18,18 @@ export class CategoryBtnSection extends Component {
     const { activeBtn } = this.state;
 
     return (
-      <section className="categories-container">
-        < PlanetsBtn 
-          setActive={ this.setActiveBtn }
-          activeBtn={ activeBtn } />
-        < PeopleBtn 
-          setActive={ this.setActiveBtn }
-          activeBtn={ activeBtn } />
-        < VehiclesBtn 
-          setActive={ this.setActiveBtn }
-          activeBtn={ activeBtn } />
+      <section className="categories-btn-container">
+        <div className="btn-container">
+          < PlanetsBtn 
+            setActive={ this.setActiveBtn }
+            activeBtn={ activeBtn } />
+          < PeopleBtn 
+            setActive={ this.setActiveBtn }
+            activeBtn={ activeBtn } />
+          < VehiclesBtn 
+            setActive={ this.setActiveBtn }
+            activeBtn={ activeBtn } />
+        </div>
       </section>
     )
   }

@@ -1,0 +1,18 @@
+section.categories-btn-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px; 
+
+  div.btn-container {
+    width: 30%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      width: 150px;
+      font-size: 2rem;
+    }
+  }
+}

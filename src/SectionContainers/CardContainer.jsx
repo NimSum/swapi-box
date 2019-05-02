@@ -12,7 +12,7 @@ export const CardContainer = ({ opening_crawl, title, release_date, episode_id, 
     releaseYear={ release_date }/>)
   
   return !cards.length
-    ? crawl
+    ? (<div className="crawl-container">{crawl}</div>)
     : (<section className="card-container">
         { CharacterCard(cards) }
       </section>)
