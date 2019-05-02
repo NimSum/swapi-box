@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { PlanetsBtn, PeopleBtn, VehiclesBtn } from '../components/Buttons/Buttons';
+import { PlanetsBtn, PeopleBtn, VehiclesBtn, ViewFavoritesBtn } from '../components/Buttons/Buttons';
 
 export class CategoryBtnSection extends Component {
   constructor() {
     super();
     this.state = {
-      activeBtn: ''
+      activeBtn: '',
     }
   }
 
@@ -29,6 +29,10 @@ export class CategoryBtnSection extends Component {
           < VehiclesBtn 
             setActive={ this.setActiveBtn }
             activeBtn={ activeBtn } />
+          < ViewFavoritesBtn 
+            setActive={ this.setActiveBtn }
+            activeBtn={ activeBtn } 
+            favoriteCount={ this.props.favoriteCount } />
         </div>
       </section>
     )

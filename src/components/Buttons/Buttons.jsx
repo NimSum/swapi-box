@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export const PeopleBtn= ({setActive, activeBtn}) => {
@@ -43,17 +43,27 @@ export const VehiclesBtn = ({setActive, activeBtn}) => {
   )
 }
 
-export const ViewFavoritesBtn = ({ total }) => {
+export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount, renderFavorites }) => {
+  const showFavorites = e => {
+    setActive(e);
+    // renderFavorites();
+  }
+
   return (
     <button 
       type="button"
-      className="people-button"
+      className={`${activeBtn === "favorites" 
+      ? "active category-btn"
+      : "category-btn"}`}
+      onClick={ showFavorites }
       name="favorites">
       Favorites 
-      <span className="fav-total">{ total }</span>
+      <span className="fav-total">{ favoriteCount }</span>
     </button>
   )
 }
+
+
 
 export const HomeBtn = () => {
   return (
@@ -66,15 +76,50 @@ export const HomeBtn = () => {
   )
 }
 
-export const FavoriteCardBtn = () => {
-  return (
-    <button 
-      type="button"
-      className="favorite-card-button"
-      name="favorite-card">
-      Favorite This, change to image logo
-    </button>
-  )
+export class FavoriteCardBtn extends Component {
+  constructor() {
+    super();
+    this.state = {
+      active: false
+    }
+  }
+
+  componentDidMount() {
+    const storedCopy = JSON.parse(localStorage.getItem('favorites')) || [];
+    storedCopy.forEach(card => card.url === this.props.card.url && this.setState({ active: true }));
+  }
+
+  saveCard = (storedCopy) => {
+    const updatedCopy = storedCopy.concat([ this.props.card ]);
+    localStorage.setItem('favorites', JSON.stringify(updatedCopy));
+    this.props.updateFavoriteCount()
+  }
+
+  deleteCard = (storedCopy) => {
+    const updatedCopy = storedCopy.filter(card => card.url !== this.props.card.url);
+    localStorage.setItem('favorites', JSON.stringify(updatedCopy));
+    this.props.updateFavoriteCount()
+  }
+
+  toggleFavorite = () => {
+    const storedCopy = JSON.parse(localStorage.getItem('favorites')) || [];
+    this.setState({ active: !this.state.active}, () => {
+      this.state.active 
+        ? this.saveCard(storedCopy)
+        : this.deleteCard(storedCopy)
+    }) 
+  }
+
+  render() {
+    return (
+      <button 
+        className={this.state.active ? 'active favorite-card-btn' : 'favorite-card-btn'}
+        name="favorite-card"
+        onClick={this.toggleFavorite}>
+        Favorite Btn(IMG)
+      </button>
+    )
+  } 
 }
 
 PeopleBtn.propTypes = {
@@ -96,5 +141,5 @@ HomeBtn.propTypes = {
   
 }
 FavoriteCardBtn.propTypes = {
-  
+  card: PropTypes.object
 }

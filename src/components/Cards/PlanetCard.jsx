@@ -1,21 +1,19 @@
 import React from 'react';
+import { FavoriteCardBtn } from '../Buttons/Buttons';
 
-export const PlanetCard = ({ cards }) => 
-// Name
-// Terrain
-// Population
-// Climate
-// Residents
-// A button to “Favorite” the planet
-  cards.map(planet => (
-    <article key={ planet.id } className="planet-card">
-      <h3>{ planet.name }</h3>
-      <p>{ planet.terrain }</p>
-      <p>{ planet.climate }</p>      
-      <p>{ planet.population }</p>
+export const PlanetCard = ({ card, updateFavoriteCount }) => 
+  (
+    <article key={ card.id } className="planet-card">
+      < FavoriteCardBtn  
+        updateFavoriteCount={updateFavoriteCount}
+        card={ card }/>
+      <h3>{ card.name }</h3>
+      <p>{ card.terrain }</p>
+      <p>{ card.climate }</p>      
+      <p>{ card.population }</p>
       <div className="residents">
-        { planet.residentNames.map(person => (
+        { card.residentNames.map(person => (
         <p key={person.id}>{ person.name }</p>)) }
       </div>
     </article>
-  ))
+  )
