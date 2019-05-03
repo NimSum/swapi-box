@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PlanetsBtn, PeopleBtn, VehiclesBtn } from '../../components/Buttons/Buttons';
+import { PlanetsBtn, PeopleBtn, VehiclesBtn } from '../../../components/Buttons/Buttons';
 
 describe('Category Buttons', () => {
   const mockSetActive = jest.fn();

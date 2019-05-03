@@ -13,6 +13,7 @@ class App extends Component {
       loading: false,
       categorySelected: '',
       renderCards: [],
+      favoriteCount: 0
     }
   }
 
@@ -52,7 +53,7 @@ class App extends Component {
             .then(species => ({ speciesName: species.name }));
           Promise.all([ homeworldInfo, speciesInfo ])
             .then(characterInfo => {
-              const card = { ...characterInfo[0], ...characterInfo[0] , ...person, id: uuidv4(), type: 'character' }
+              const card = { ...characterInfo[0], ...characterInfo[1] , ...person, id: uuidv4(), type: 'character' }
               const renderCards = [ ...this.state.renderCards, card ]
               this.setState({ renderCards })
             })
@@ -101,8 +102,5 @@ class App extends Component {
     )
   }
 }
-
-
-
 
 export default App;

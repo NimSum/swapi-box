@@ -19,6 +19,10 @@ exports[`Category Button Section Should match component snapshot 1`] = `
       activeBtn=""
       setActive={[Function]}
     />
+    <ViewFavoritesBtn
+      activeBtn=""
+      setActive={[Function]}
+    />
   </div>
 </section>
 `;
