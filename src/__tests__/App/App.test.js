@@ -40,6 +40,10 @@ describe('App component', () => {
     expect(wrapper.state()).toEqual(mockState);
   });
 
+  it('Should match snapshot taken', () => {
+    expect(wrapper).toMatchSnapshot();
+  })
+  
   it('Should invoke methods when mounted', () => {
     expect(fetchMovieSpy).toHaveBeenCalledTimes(1);
     wrapper.instance().componentDidMount();
