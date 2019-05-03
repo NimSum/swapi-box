@@ -13,6 +13,7 @@ class App extends Component {
       loading: false,
       categorySelected: '',
       renderCards: [],
+      favoriteCount: 0
     }
   }
 
