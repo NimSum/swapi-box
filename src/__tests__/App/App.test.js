@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import App from '../../App/App';
 import * as fetchMethods from '../../ApiCalls/apiFetches';
 
@@ -28,8 +28,6 @@ describe('App component', () => {
     categoryFetchSpy.mockClear();
     fetchMovieSpy.mockClear();
   })
-
-  
 
   it('Should have default states', () => {
     const mockState = {
@@ -83,18 +81,26 @@ describe('App component', () => {
   describe('Fetch methods', () => {
     it('Should fetch people', () => {
       wrapper.instance().fetchPeople()
-      expect(categoryFetchSpy).toHaveBeenCalledTimes(1);
-    })
+      expect(categoryFetchSpy).toHaveBeenCalledWith('people');
+    });
   
     it('Should fetch planets', () => {
       wrapper.instance().fetchPlanets()
-      expect(categoryFetchSpy).toHaveBeenCalledTimes(1);
-    })
+      expect(categoryFetchSpy).toHaveBeenCalledWith('planets');
+    });
 
-  })
+    it('Should fetch vehicles', () => {
+      wrapper.instance().fetchVehicles()
+      expect(categoryFetchSpy).toHaveBeenCalledWith('vehicles');
+    });
 
-  
-
+    it('Should setstate render favorites', () => {
+      const mockCards = [{ name: "Obi-wan Kenobi" }, { name: "Darth Vader" }]
+      localStorage.setItem('favorites', JSON.stringify(mockCards));
+      wrapper.instance().renderFavorites()
+      expect(wrapper.state().renderCards).toEqual(mockCards);
+    });
+  });
 })
 
 
