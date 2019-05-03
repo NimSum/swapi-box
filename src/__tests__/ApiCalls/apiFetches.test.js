@@ -1,4 +1,4 @@
-import { fetchRandomMovie, fetchCategory } from "../../ApiCalls/apiFetches";
+import { fetchRandomMovie, fetchCategory, fetchItem } from "../../ApiCalls/apiFetches";
 
 describe('Api Fetches', () => {  
   const mockReject = jest.fn().mockImplementation(() => 
@@ -30,7 +30,7 @@ describe('Api Fetches', () => {
       expect(result).toEqual(mockFilmResponse);
     })
   
-    it('Should return an error if response fails', async () => {
+    it('Should return an error if request fails', async () => {
       window.fetch = mockReject;
       
       await expect(fetchRandomMovie(mockFilmId)).rejects.toEqual(Error('Error fetching movies'));
@@ -61,13 +61,35 @@ describe('Api Fetches', () => {
       expect(result).toEqual(mockCategoryResult.results);
     })
 
-    it('Should return error if response NOT "ok"', async () => {
+    it('Should return error if request fails', async () => {
       window.fetch = mockReject;
 
       await expect(fetchCategory(mockCategory)).rejects.toEqual(Error('Error fetching category items'));
     })
   });
 
-  
-  
+  describe('Fetch item(url based)', () => {
+    const mockUrl = 'https://swapi.co/api/vehicles/42/';
+    const mockFetchedResult = { name: 'Sith speeder' , model: 'FC-20 speeder bike' }
+    
+    it('Should fetch item using the correct parameter', () => {
+      window.fetch = mockResolve(mockFetchedResult);
+      
+      fetchItem(mockUrl);
+      expect(window.fetch).toHaveBeenCalledWith(mockUrl);
+    })
+
+    it('Should return fetched data back if response "ok"', async () => {
+      window.fetch = mockResolve(mockFetchedResult);
+
+      const result = await fetchItem(mockUrl);
+      expect(result).toEqual(mockFetchedResult);
+    })
+
+    it('Should return an error if request fails', async () => {
+      window.fetch = mockReject;
+
+      expect(fetchItem(mockUrl)).rejects.toEqual(Error('Error fetching item'))
+    })
+  })
 })
