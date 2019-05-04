@@ -1,11 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PlanetsBtn, PeopleBtn, VehiclesBtn, ViewFavoritesBtn, FavoriteCardBtn } from '../../../components/Buttons/Buttons';
+import { PlanetsBtn, PeopleBtn, VehiclesBtn, ViewFavoritesBtn, FavoriteCardBtn, HomeBtn } from '../../../components/Buttons/Buttons';
 
 describe('Buttons', () => {
 
   const mockSetActive = jest.fn();
   afterEach(() => mockSetActive.mockClear());
+  
+  it('Home button: render crawl on click', () => {
+    const mockActiveBtn = 'home';
+    const wrapper = shallow(
+      < HomeBtn 
+        setActive={ mockSetActive } 
+        activeBtn={ mockActiveBtn } />
+    )
+    wrapper.find('button').simulate('click');
+    expect(mockSetActive).toHaveBeenCalledTimes(1);
+  })
 
   it('Planet Button: trigger setActive button on click', () => {
     const mockActiveBtn = 'planets';

@@ -47,7 +47,7 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     <button 
       type="button"
       className={`${activeBtn === "favorites" 
-        ? "active category-btn"
+        ? "active-fav category-btn"
         : "category-btn"}`}
       onClick={ setActive }
       name="favorites"
@@ -57,12 +57,13 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     </button>
   )
 
-export const HomeBtn = () => {
+export const HomeBtn = ({ setActive, activeBtn }) => {
   return (
     <button 
       type="button"
-      className="home-button"
-      name="home">
+      className={ activeBtn ? 'active-home home-btn' : 'home-btn' }
+      name="home"
+      onClick={ setActive } >
       Home
     </button>
   )
@@ -105,7 +106,7 @@ export class FavoriteCardBtn extends Component {
   render() {
     return (
       <button 
-        className={this.state.active ? 'active favorite-card-btn' : 'favorite-card-btn'}
+        className={this.state.active ? 'active-fav favorite-card-btn' : 'favorite-card-btn'}
         name="favorite-card"
         onClick={this.toggleFavorite}>
         Favorite Btn(IMG)
@@ -127,10 +128,13 @@ VehiclesBtn.propTypes = {
   activeBtn: PropTypes.string
 }
 ViewFavoritesBtn.propTypes = {
-  
+  activeBtn: PropTypes.string, 
+  setActive: PropTypes.func, 
+  favoriteCount: PropTypes.number 
 }
 HomeBtn.propTypes = {
-  
+  activeBtn: PropTypes.string,
+  setActive: PropTypes.func
 }
 FavoriteCardBtn.propTypes = {
   card: PropTypes.object

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FavoriteCardBtn } from '../Buttons/Buttons';
+import PropTypes from 'prop-types';
 
 export const PlanetCard = ({ card, updateFavoriteCount }) => 
   (
@@ -17,3 +18,8 @@ export const PlanetCard = ({ card, updateFavoriteCount }) =>
       </div>
     </article>
   )
+
+PlanetCard.propTypes = {
+  card: PropTypes.object,
+  updateFavoriteCount: PropTypes.func
+}
