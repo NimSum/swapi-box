@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buttons Favorite Card Button Should be disabled/enabled if active state is true/false 1`] = `
+<button
+  className="favorite-card-btn"
+  name="favorite-card"
+  onClick={[Function]}
+>
+  Favorite Btn(IMG)
+</button>
+`;
+
+exports[`Buttons Favorite Card Button Should be disabled/enabled if active state is true/false 2`] = `
+<button
+  className="active favorite-card-btn"
+  name="favorite-card"
+  onClick={[MockFunction]}
+>
+  Favorite Btn(IMG)
+</button>
+`;
+
+exports[`Buttons ViewFavorites Button: Should be disabled with favorite count set to 0 1`] = `
+<button
+  className="active category-btn"
+  disabled={true}
+  name="favorites"
+  onClick={[MockFunction]}
+  type="button"
+>
+  No favorites
+</button>
+`;
+
+exports[`Buttons ViewFavorites Button: Should match snapshot taken 1`] = `
+<button
+  className="active category-btn"
+  disabled={false}
+  name="favorites"
+  onClick={[MockFunction]}
+  type="button"
+>
+  Favorites
+  <span
+    className="fav-total"
+  >
+    1
+  </span>
+</button>
+`;

@@ -11,6 +11,7 @@ describe('App component', () => {
   let fetchVehiclesSpy;
   let renderFavoritesSpy;
   let fetchPeopleSpy;
+  let setStateSpy;
 
   let categoryFetchSpy =  jest.spyOn(fetchMethods, 'fetchCategory');
   let fetchMovieSpy = jest.spyOn(fetchMethods, 'fetchRandomMovie');
@@ -22,11 +23,13 @@ describe('App component', () => {
     fetchVehiclesSpy = jest.spyOn(wrapper.instance(), 'fetchVehicles');
     renderFavoritesSpy = jest.spyOn(wrapper.instance(), 'renderFavorites')
     fetchPeopleSpy = jest.spyOn(wrapper.instance(), 'fetchPeople');
+    setStateSpy = jest.spyOn(wrapper.instance(), 'setState');
   });
 
   afterEach(() => {
     categoryFetchSpy.mockClear();
     fetchMovieSpy.mockClear();
+    setStateSpy.mockClear();
   })
 
   it('Should have default states', () => {
@@ -83,25 +86,39 @@ describe('App component', () => {
   })
 
   describe('Fetch methods', () => {
+
+    const localFetch = response =>
+      window.fetch = jest.fn().mockImplementation(() => 
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(response)
+      }));
+
     it('Should fetch people', () => {
       wrapper.instance().fetchPeople()
+       .then(result => expect(setStateSpy).toHaveBeenCalledTimes(1));
       expect(categoryFetchSpy).toHaveBeenCalledWith('people');
     });
   
     it('Should fetch planets', () => {
       wrapper.instance().fetchPlanets()
+        .then(result => expect(setStateSpy).toHaveBeenCalledTimes(1)); 
       expect(categoryFetchSpy).toHaveBeenCalledWith('planets');
     });
 
     it('Should fetch vehicles', () => {
+      const mockResponse = { results: [{ name: 'blah'}]};
+      window.fetch = localFetch(mockResponse);
       wrapper.instance().fetchVehicles()
+        .then(result => expect(setStateSpy).toHaveBeenCalledTimes(1));
       expect(categoryFetchSpy).toHaveBeenCalledWith('vehicles');
     });
 
     it('Should setstate render favorites', () => {
       const mockCards = [{ name: "Obi-wan Kenobi" }, { name: "Darth Vader" }]
       localStorage.setItem('favorites', JSON.stringify(mockCards));
-      wrapper.instance().renderFavorites()
+      wrapper.instance().renderFavorites();
+      expect(setStateSpy).toHaveBeenCalledTimes(2);
       expect(wrapper.state().renderCards).toEqual(mockCards);
     });
   });

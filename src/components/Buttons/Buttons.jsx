@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export const PeopleBtn= ({setActive, activeBtn}) => {
+export const PeopleBtn= ({ setActive, activeBtn }) => {
   return (
     <button 
       type="button"
@@ -15,7 +15,7 @@ export const PeopleBtn= ({setActive, activeBtn}) => {
   )
 }
 
-export const PlanetsBtn = ({setActive, activeBtn}) => {
+export const PlanetsBtn = ({ setActive, activeBtn }) => {
   return (
     <button 
       type="button"
@@ -29,7 +29,7 @@ export const PlanetsBtn = ({setActive, activeBtn}) => {
   )
 }
 
-export const VehiclesBtn = ({setActive, activeBtn}) => {
+export const VehiclesBtn = ({ setActive, activeBtn }) => {
   return (
     <button 
       type="button"
@@ -47,8 +47,8 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     <button 
       type="button"
       className={`${activeBtn === "favorites" 
-      ? "active category-btn"
-      : "category-btn"}`}
+        ? "active category-btn"
+        : "category-btn"}`}
       onClick={ setActive }
       name="favorites"
       disabled={ !favoriteCount > 0 ? true : false }>
