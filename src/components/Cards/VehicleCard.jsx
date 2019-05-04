@@ -1,5 +1,6 @@
 import React from 'react';
 import { FavoriteCardBtn } from '../Buttons/Buttons';
+import PropTypes from 'prop-types';
 
 export const VehicleCard = ({ card, updateFavoriteCount }) => 
   (
@@ -15,3 +16,8 @@ export const VehicleCard = ({ card, updateFavoriteCount }) =>
       </div>
     </article>
   )
+
+VehicleCard.propTypes = {
+  card: PropTypes.object,
+  updateFavoriteCount: PropTypes.func
+}

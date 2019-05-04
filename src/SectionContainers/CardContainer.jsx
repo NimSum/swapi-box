@@ -35,18 +35,16 @@ export const CardContainer = ({ movie, cards, category, updateFavoriteCount }) =
     return result;
   });
 
-  return !cards.length
-    ? (<div className="crawl-container">{crawl}</div>)
-    : (<section className="card-container">
+  return cards.length
+  ? (<section className="card-container">
         { cardElements }
       </section>)
+  : (<div className="crawl-container">{crawl}</div>)
 }
 
 CardContainer.propTypes = {
-  opening_crawl: PropTypes.string,
-  title: PropTypes.string,
-  release_date: PropTypes.string,
-  episode_id: PropTypes.number,
+  movie: PropTypes.object,
   cards: PropTypes.array,
-  category: PropTypes.string
+  category: PropTypes.string,
+  updateFavoriteCount: PropTypes.func
 }

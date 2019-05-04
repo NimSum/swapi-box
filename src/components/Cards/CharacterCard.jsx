@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { FavoriteCardBtn } from '../Buttons/Buttons';
 
 export const CharacterCard = ({ card, updateFavoriteCount }) => 
-  (
-    <article key={ card.id } className="character-card">
+  (<article key={ card.id } className="character-card">
       < FavoriteCardBtn 
        card={ card }
        updateFavoriteCount={updateFavoriteCount} />
@@ -14,9 +13,9 @@ export const CharacterCard = ({ card, updateFavoriteCount }) =>
         <h4>{ card.worldName }</h4>
         <p>{ card.worldPopulation }</p>
       </div>
-    </article>
-  )
+    </article>)
 
 CharacterCard.propTypes = {
-  cards: PropTypes.array
+  card: PropTypes.object,
+  updateFavoriteCount: PropTypes.func
 }

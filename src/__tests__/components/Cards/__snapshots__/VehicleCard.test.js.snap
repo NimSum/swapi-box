@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Character card Should match snapshot with card passed in 1`] = `
+<VehicleCard
+  card={
+    Object {
+      "crew": "1",
+      "id": 123,
+      "model": "Model 3",
+      "name": "Tesla",
+      "passengers": "1",
+      "vehicle_class": "Wheeled",
+    }
+  }
+  updateFavoriteCount={[MockFunction]}
+>
+  <article
+    className="vehicle-card"
+  >
+    <FavoriteCardBtn
+      card={
+        Object {
+          "crew": "1",
+          "id": 123,
+          "model": "Model 3",
+          "name": "Tesla",
+          "passengers": "1",
+          "vehicle_class": "Wheeled",
+        }
+      }
+      updateFavoriteCount={[MockFunction]}
+    >
+      <button
+        className="favorite-card-btn"
+        name="favorite-card"
+        onClick={[Function]}
+      >
+        Favorite Btn(IMG)
+      </button>
+    </FavoriteCardBtn>
+    <h3>
+      Tesla
+    </h3>
+    <div
+      className="vehicle-specs"
+    >
+      <p>
+        Model 3
+      </p>
+      <p>
+        Wheeled
+      </p>
+      <p>
+        2
+      </p>
+    </div>
+  </article>
+</VehicleCard>
+`;

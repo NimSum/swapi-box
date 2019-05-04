@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { PlanetsBtn, PeopleBtn, VehiclesBtn, ViewFavoritesBtn } from '../components/Buttons/Buttons';
 
 export class CategoryBtnSection extends Component {
@@ -39,4 +40,8 @@ export class CategoryBtnSection extends Component {
   }
 }
 
-export default CategoryBtnSection
+CategoryBtnSection.propTypes = {
+  changeCategory: PropTypes.func,
+  favoriteCount: PropTypes.number,
+  updateFavoriteCount: PropTypes.func
+}
