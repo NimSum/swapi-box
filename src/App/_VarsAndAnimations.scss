@@ -1,14 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Changa|Roboto');
+$content-font: 'Roboto', sans-serif;
+$title-font: 'Changa', sans-serif;
 
 $active-btn: hsl(115, 34%, 81%);
 $button-color-primary: hsl(177, 60%, 66%);
 $button-color-secondary: hsl(0, 31%, 57%);
+$btn-active-fav: hsl(81, 31%, 57%);
+
 
 $container-bgc-primary: hsl(115, 34%, 81%);
 $container-bgc-secondary: hsl(115, 34%, 81%);
 
+$star-wars-font-color: hsl(48, 99%, 64%);
 $font-light: hsl(120, 5%, 92%);
 $font-dark:hsl(120, 4%, 57%);
-
+$font-card-title-color: #fff;
+$font-card-desc-color: #fff;
+$card-title-border-color: #fff;
+$card-shadow: 0px 0px 20px hsla(0, 0%, 100%, .3);
+$card-bg-opacity:  hsla(0, 0%, 100%, 0.2);
 @keyframes crawl {
   0% {
     top: 0;

@@ -14,6 +14,7 @@ export const VehicleCard = ({ card, updateFavoriteCount }) =>
         <p>{ card.vehicle_class }</p>
         <p>{ parseInt(card.passengers) + parseInt(card.crew) }</p>
       </div>
+      <img className="bg-img" alt='card background' src={require('../../images/card-backgrounds/vehicle-bg.png')} />
     </article>
   )
 

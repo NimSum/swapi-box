@@ -3,7 +3,7 @@ import React from 'react';
 export const Header = () => {
   return (
     <header>
-      <h1>Star Wars</h1>
+      <img src={require('../images/star-wars-title.png')} alt="Star Wars Title"/>
     </header>
   )
 }

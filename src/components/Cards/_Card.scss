@@ -1,0 +1,60 @@
+section.card-container {
+  article {
+    border-radius: 20px;
+    width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    box-shadow: $card-shadow;
+    position: relative;
+    background-color: $card-bg-opacity;
+
+    h3, h4, div, button {
+      position: relative;
+    }
+
+    h3, h4 {
+      color: $font-card-title-color;
+      font-family: $title-font;
+    }
+
+    h3 {
+      border: 2px solid $card-title-border-color;
+      padding: 5px 0;
+    }
+
+    p {
+      font-family: $content-font;
+    }
+
+    img.bg-img {
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+      opacity: .1;
+    }
+  }
+
+
+  article.character-card {
+    
+    div.home-planet {
+      border-top: 2px solid $card-title-border-color;
+    }
+
+    img.bg-img {
+      width: 200px;
+      left: 0;
+      opacity: .2;
+    }
+  }
+
+  article.vehicle-card {
+    min-height: 300px;
+
+    img.bg-img {
+      width: 100%;
+      left: 0;
+      opacity: .2;
+    }
+  }
+}

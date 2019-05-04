@@ -17,6 +17,11 @@ exports[`Character card Should match snapshot with card passed in 1`] = `
     className="character-card"
     key="123"
   >
+    <img
+      alt="card background"
+      className="bg-img"
+      src="character-bg.png"
+    />
     <FavoriteCardBtn
       card={
         Object {
@@ -47,8 +52,13 @@ exports[`Character card Should match snapshot with card passed in 1`] = `
       className="home-planet"
     >
       <h4>
-        Earth
+        Home Planet:
       </h4>
+      <p
+        className="world-name"
+      >
+        Earth
+      </p>
       <p>
         7500000000
       </p>

@@ -1,3 +1,15 @@
-button.active {
-  background-color: $active-btn;
+button.active-fav {
+  background-color: $btn-active-fav;
+}
+
+button.favorite-card-btn {
+  -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  border: 0;
+  height: 25px;
+  width: 60%;
+}
+
+button {
+  cursor: pointer;
 }

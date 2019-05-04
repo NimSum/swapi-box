@@ -10,9 +10,11 @@ export const CharacterCard = ({ card, updateFavoriteCount }) =>
       <h3>{ card.name }</h3>
       <h4>{ card.speciesName }</h4>
       <div className="home-planet">
-        <h4>{ card.worldName }</h4>
+        <h4>Home Planet:</h4>
+        <p className="world-name">{ card.worldName }</p>
         <p>{ card.worldPopulation }</p>
       </div>
+      <img className="bg-img" alt='card background' src={require('../../images/card-backgrounds/character-bg.png')} />
     </article>)
 
 CharacterCard.propTypes = {

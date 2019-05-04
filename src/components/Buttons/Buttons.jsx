@@ -79,7 +79,7 @@ export class FavoriteCardBtn extends Component {
 
   componentDidMount() {
     const storedCopy = JSON.parse(localStorage.getItem('favorites')) || [];
-    storedCopy.forEach(card => card.url === this.props.card.url && this.setState({ active: true }));
+    storedCopy.forEach(card => card.name === this.props.card.name && this.setState({ active: true }));
   }
 
   saveCard = (storedCopy) => {
