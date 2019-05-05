@@ -64,6 +64,36 @@ exports[`Buttons Favorite Card Button Should be disabled/enabled if active state
 </button>
 `;
 
+exports[`Buttons Show more less buttons Should match component snapshot 1`] = `
+<div
+  className="more-less-btns"
+>
+  <button
+    name="show-more"
+    onClick={[MockFunction]}
+  >
+    Show More
+  </button>
+</div>
+`;
+
+exports[`Buttons Show more less buttons Should match snapshot of page change 1`] = `
+<div
+  className="more-less-btns"
+>
+  <button
+    name="show-more"
+  >
+    Show More
+  </button>
+  <button
+    name="show-less"
+  >
+    Show Less
+  </button>
+</div>
+`;
+
 exports[`Buttons ViewFavorites Button: Should be disabled with favorite count set to 0 1`] = `
 <button
   className="active view-fav-btn"

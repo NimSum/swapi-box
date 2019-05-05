@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PlanetsBtn, PeopleBtn, VehiclesBtn, ViewFavoritesBtn, FavoriteCardBtn, HomeBtn } from '../../../components/Buttons/Buttons';
+import { PlanetsBtn, PeopleBtn, VehiclesBtn, ViewFavoritesBtn, FavoriteCardBtn, HomeBtn, ShowMoreLessBtns } from '../../../components/Buttons/Buttons';
 
 describe('Buttons', () => {
 
@@ -131,6 +131,54 @@ describe('Buttons', () => {
       })
     })
 
+  })
+
+  describe('Show more less buttons', () => {
+
+    const mockShowMore = jest.fn();
+    const mockShowLess = jest.fn();
+    const mockCurrentPage = 1;
+
+    let wrapper;
+    beforeEach(() => {
+      wrapper = shallow(
+        < ShowMoreLessBtns
+          showMore={ mockShowMore } 
+          showLess={ mockShowLess }
+          mockCurrentPage= { mockCurrentPage }
+          />
+      )
+    })
+
+    it('Should match component snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    })
+
+    it('Should match snapshot of page change', () => {
+      const mockPageChange = 2;
+      wrapper = shallow( < ShowMoreLessBtns currentPage={ mockPageChange } />)
+      expect(wrapper).toMatchSnapshot();
+    })
+
+    it('Should trigger showmore method on click', () => {
+      wrapper.find('button:first-child').simulate('click', () => {
+        expect(mockShowMore).toHaveBeenCalledTimes(1);
+      })
+    })
+
+    it('Should trigger showmore method on click', () => {
+      const mockPageChange = 2;
+      wrapper = shallow( 
+        < ShowMoreLessBtns 
+        currentPage={ mockPageChange } 
+        showLes= { mockShowLess }/>
+      )
+
+      wrapper.find('button:last-child').simulate('click', () => {
+        expect(mockShowLess).toHaveBeenCalledTimes(1);
+      })
+    })
+    
   })
 
 })

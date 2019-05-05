@@ -10,8 +10,11 @@ exports[`App component Should match snapshot taken 1`] = `
   <CardContainer
     cards={Array []}
     category="home"
+    currentPage={1}
     loading={true}
     movie={Object {}}
+    showLess={[Function]}
+    showMore={[Function]}
     updateFavoriteCount={[Function]}
   />
   <CategoryBtnSection
