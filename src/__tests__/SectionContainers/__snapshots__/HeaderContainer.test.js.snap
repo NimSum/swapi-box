@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header Should match snapshot 1`] = `
+exports[`Header Should match snapshot with conditional rendering of category 1`] = `
+<header>
+  <img
+    alt="Star Wars Title"
+    src="star-wars-title.png"
+  />
+  <h2>
+    PEOPLE
+  </h2>
+</header>
+`;
+
+exports[`Header Should match snapshot with conditional rendering of home 1`] = `
 <header>
   <img
     alt="Star Wars Title"

@@ -10,6 +10,7 @@ describe('Character card', () => {
     terrain: 'Very Watery',
     climate: 'Hot or Cold', 
     population: '7500000000',
+    imgNum: 1,
     residentNames: [ 
       { id: 1, name: 'Nimsum' },
       { id: 2, name: 'Dimsum' }
