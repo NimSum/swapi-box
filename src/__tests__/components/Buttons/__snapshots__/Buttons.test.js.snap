@@ -72,15 +72,7 @@ exports[`Buttons ViewFavorites Button: Should be disabled with favorite count se
   onClick={[MockFunction]}
   type="button"
 >
-  <img
-    alt="card background"
-    src="empire.png"
-  />
   No favorites
-  <img
-    alt="card background"
-    src="rebel-alliance.png"
-  />
 </button>
 `;
 
@@ -92,19 +84,11 @@ exports[`Buttons ViewFavorites Button: Should match snapshot taken 1`] = `
   onClick={[MockFunction]}
   type="button"
 >
-  <img
-    alt="card background"
-    src="empire.png"
-  />
   Favorites
   <span
     className="fav-total"
   >
     1
   </span>
-  <img
-    alt="card background"
-    src="rebel-alliance.png"
-  />
 </button>
 `;

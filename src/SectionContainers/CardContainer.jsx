@@ -6,17 +6,17 @@ import { PlanetCard } from '../components/Cards/PlanetCard';
 import { VehicleCard } from '../components/Cards/VehicleCard';
 import { Bb8LoadingIcon } from '../components/loading_indicator/Icons';
 
-export const CardContainer = ({ movie, loading, loadingCards, cards, updateFavoriteCount }) => {
+export const CardContainer = ({ movie, loading, category, cards, updateFavoriteCount }) => {
   const { opening_crawl, title, release_date, episode_id } = movie;
   const romanNumeral = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII'];
 
-  const crawl = (
-      < Crawl
-        title={ `Episode ${romanNumeral[episode_id - 1]}` }
-        subTitle={ title }
-        text={ opening_crawl }
-        releaseYear={ release_date }
-      />);
+  const crawl = 
+        (< Crawl
+          title={ `Episode ${romanNumeral[episode_id - 1]}` }
+          subTitle={ title }
+          text={ opening_crawl }
+          releaseYear={ release_date }
+        />);
 
   const cardElements = cards.map(card => {
     let result;
@@ -36,11 +36,13 @@ export const CardContainer = ({ movie, loading, loadingCards, cards, updateFavor
     return result;
   });
 
-  return loading
-  ? (<section className="card-container">
-        { cardElements }
-      </section>)
-  : (<div className="crawl-container">{ !loading ? (< Bb8LoadingIcon />) : crawl }</div>)
+  const cardsContainer = cards.length 
+    ? (<section className="card-container">{ cardElements }</section>)
+    : (<div className="bb8-container">< Bb8LoadingIcon /></div>)
+
+  return category === 'home'
+  ? (<div className="crawl-container">{ loading ? < Bb8LoadingIcon /> : crawl }</div>)
+  : cardsContainer
 }
 
 CardContainer.propTypes = {

@@ -124,7 +124,7 @@ exports[`Character card Should match snapshot with card passed in 1`] = `
     <img
       alt="card background"
       className="bg-img"
-      src="planet-4.png"
+      src="planet-5.png"
     />
   </article>
 </PlanetCard>

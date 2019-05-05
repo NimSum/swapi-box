@@ -4,10 +4,6 @@ exports[`Category Button Section Should match component snapshot 1`] = `
 <section
   className="categories-btn-container"
 >
-  <HomeBtn
-    activeBtn=""
-    setActive={[Function]}
-  />
   <div
     className="btn-container"
   >
@@ -24,6 +20,10 @@ exports[`Category Button Section Should match component snapshot 1`] = `
       setActive={[Function]}
     />
   </div>
+  <HomeBtn
+    activeBtn=""
+    setActive={[Function]}
+  />
   <ViewFavoritesBtn
     activeBtn=""
     favoriteCount={1}

@@ -8,7 +8,8 @@ export const CharacterCard = ({ card, updateFavoriteCount }) =>
        card={ card }
        updateFavoriteCount={updateFavoriteCount} />
       <h3>{ card.name }</h3>
-      <h4>{ card.speciesName }</h4>
+      <h4> Species: </h4>
+      <p>{ card.speciesName }</p>
       <div className="home-planet">
         <h4>Home Planet:</h4>
         <p className="world-name">{ card.worldName }</p>

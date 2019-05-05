@@ -13,13 +13,18 @@ section.card-container {
       z-index: 1;
     }
 
-    h3, h4 {
-      color: $font-card-title-color;
+    h4 {
       font-family: $title-font;
       margin: 10px;
     }
+    
+    h4 {
+      color: #f08a5d;
+      font-size: 1.3rem;
+    }
 
     h3 {
+      color: $font-card-title-color;
       border-width: 2px 0 2px 0;
       border-style: solid;
       border-color: $card-title-border-color;
@@ -29,9 +34,12 @@ section.card-container {
 
     p {
       font-family: $content-font;
-      margin: 2px auto;
+      margin: 5px auto;
+      padding: 2px;
       width: 50%;
-    
+      color: $font-dark;
+      background-color: $font-card-desc-color;
+      border-radius: 10px;
     }
 
     img.bg-img {
@@ -48,9 +56,13 @@ section.card-container {
 
     div.home-planet {
       border-top: 2px solid $card-title-border-color;
-      width: 30%;
+      width: 50%;
       white-space: nowrap;
       margin: auto;
+
+      p {
+        width: 100%;
+      }
     }
 
     img.bg-img {

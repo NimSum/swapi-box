@@ -55,10 +55,8 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
       onClick={ setActive }
       name="favorites"
       disabled={ !favoriteCount > 0 ? true : false }>
-      <img alt='card background' src={require('../../images/icons/empire.png')} />
       { !favoriteCount > 0 ? 'No favorites' : 'Favorites' }
       { favoriteCount > 0 && (<span className="fav-total">{ favoriteCount }</span>) }
-      <img alt='card background' src={require('../../images/icons/rebel-alliance.png')} />
     </button>
   )
 

@@ -10,9 +10,8 @@ class App extends Component {
     super();
     this.state = {
       selectedMovie: {},
-      loading: true,
-      loadingCards: false,
-      categorySelected: '',
+      loading: false,
+      categorySelected: 'home',
       renderCards: [],
       favoriteCount: 0
     }
@@ -20,12 +19,11 @@ class App extends Component {
 
   componentDidMount() {
     const randomMovieId = Math.floor(Math.random() * 7) + 1;
+    this.setState({ loading: true })
     this.updateFavoriteCount();
-    setTimeout(() => 
-      fetchRandomMovie(randomMovieId)
-      .then(film => this.setState({ selectedMovie: film, loading: false }))
-      .catch(error => console.log(error) )
-      , 100)
+    fetchRandomMovie(randomMovieId)
+    .then(film => this.setState({ selectedMovie: film, loading: false }))
+    .catch(error => console.log(error) )
   }
 
   updateFavoriteCount = () => {
@@ -35,11 +33,11 @@ class App extends Component {
 
   renderFavorites = () => {
     const renderCards = JSON.parse(localStorage.getItem('favorites')) || [];
-    renderCards.length && this.setState({ renderCards, loadingCards: false })
+    renderCards.length && this.setState({ renderCards })
   }
 
   changeCategory = category => {
-    this.setState({ categorySelected: category, renderCards: [], loadingCards: true });
+    this.setState({ categorySelected: category, renderCards: [] });
     category === 'people' && this.fetchPeople();
     category === 'planets' && this.fetchPlanets();
     category === 'vehicles' && this.fetchVehicles();
@@ -58,7 +56,7 @@ class App extends Component {
             .then(characterInfo => {
               const card = { ...characterInfo[0], ...characterInfo[1] , ...person, id: uuidv4(), type: 'character' }
               const renderCards = [ ...this.state.renderCards, card ];
-              this.setState({ renderCards, loadingCards: false })
+              this.setState({ renderCards })
               return renderCards;
             });
         })
@@ -74,7 +72,7 @@ class App extends Component {
           .then(names => {
             const card = ({ residentNames: names, ...planet, id: uuidv4(), type: 'planet' })
             const renderCards = [...this.state.renderCards, card]
-            this.setState({ renderCards, loadingCards: false })
+            this.setState({ renderCards })
             return renderCards;
           })
       })).catch(error => console.log(error));
@@ -84,7 +82,7 @@ class App extends Component {
       .then(vehicles => vehicles.map(vehicle => {
         const vehicleCard = { ...vehicle, id: uuidv4(), type: 'vehicle' }
         const renderCards = [...this.state.renderCards, vehicleCard ]
-        this.setState({ renderCards, loadingCards: false })
+        this.setState({ renderCards })
         return renderCards;
       })).catch(error => console.log(error));
 
@@ -94,10 +92,10 @@ class App extends Component {
         < Header category={ this.state.categorySelected }/>
         < CardContainer 
           loading= { this.state.loading }
-          loadingCards= { this.state.loadingCards }
           movie = { this.state.selectedMovie }
           cards={ this.state.renderCards }
-          updateFavoriteCount={ this.updateFavoriteCount } />
+          updateFavoriteCount={ this.updateFavoriteCount } 
+          category={ this.state.categorySelected } />
         < CategoryBtnSection 
           changeCategory={ this.changeCategory }
           favoriteCount={ this.state.favoriteCount }

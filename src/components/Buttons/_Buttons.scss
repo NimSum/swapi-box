@@ -12,7 +12,7 @@ button.favorite-card-btn {
   display: flex;
   margin: auto;
   justify-content: space-around;
-  background-color: hsla(0, 0%, 100%, .7);
+  background-color: hsla(0, 0%, 93%, .5);
 
   img {
     width: 20px;
@@ -20,6 +20,10 @@ button.favorite-card-btn {
 }
 
 button {
+  margin: 10px;
+  padding: 4px 10px;
+  font-size: 2rem;
+  border-radius: 10px;
   cursor: pointer;
   font-family: $title-font;
   font-weight: light;
@@ -30,11 +34,6 @@ button {
 }
 
 button.category-btn {
-  font-size: 2rem;
-  margin: 10px;
-  padding: 4px 10px;
-  border-radius: 10px;
-
   img {
     display: block;
     margin: auto;
@@ -47,11 +46,21 @@ button.active {
 
 button.view-fav-btn {
   position: absolute;
-  right: 20%;
-  
+  bottom: 10px;
+  right: 10%;
+
+  span.fav-total {
+    background-color: #000;
+    color: white;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 0 5px;
+    border-radius: 10px;
+  }
 }
 
 button.home-btn {
   position: absolute;
-  left: 20%;
+  left: 10%;
+  bottom: 10px;
 }
