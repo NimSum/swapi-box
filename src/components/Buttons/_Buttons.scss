@@ -12,7 +12,7 @@ button.favorite-card-btn {
   display: flex;
   margin: auto;
   justify-content: space-around;
-  background-color: hsl(0, 0%, 93%);
+  background-color: hsla(0, 0%, 93%, .6);
 
   img {
     width: 20px;
@@ -54,11 +54,13 @@ button.view-fav-btn {
   background-color: #00adb5;
 
   span.fav-total {
+    font-family: $content-font;
     background-color: #000;
     color: white;
     display: inline-block;
     margin: 0 5px;
-    padding: 0 5px;
+    font-size: 1.5rem;
+    padding: 5px 10px;
     border-radius: 10px;
   }
 }

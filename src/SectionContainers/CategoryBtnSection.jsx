@@ -11,8 +11,9 @@ export class CategoryBtnSection extends Component {
   }
 
   setActiveBtn = e => {
-    this.setState({ activeBtn: e.target.name });
-    this.props.changeCategory(e.target.name);
+    const value = e.target.name ? e.target.name : e.target.id;
+    this.setState({ activeBtn: value });
+    this.props.changeCategory(value);
   }
 
   render() {

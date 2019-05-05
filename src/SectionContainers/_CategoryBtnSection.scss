@@ -5,7 +5,7 @@ section.categories-btn-container {
   width: 100%;
   padding: 20px; 
   height: 13vh;
-  background-color: hsla(183, 100%, 35%, .8);
+  background-color: $btn-section-bg;
   -webkit-clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
   clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
 

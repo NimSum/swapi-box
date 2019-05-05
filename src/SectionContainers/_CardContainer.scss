@@ -6,7 +6,11 @@ section.card-container {
   justify-content: center;
   grid-gap: 6% 4%;
   grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
-  height: 68vh;
+  position: abosolute;
+  left: 50%;
+  height: 66vh;
+  bottom: 13vh;
+  
   overflow: scroll;
   padding: 20px 0;
 }
@@ -15,7 +19,10 @@ div.crawl-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  position: abosolute;
+  left: 50%;
+  height: 66vh;
+  bottom: 13vh;
 }
 
 div.bb8-container {

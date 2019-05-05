@@ -10,7 +10,7 @@ export const PeopleBtn= ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="people"
       onClick={ setActive }>
-      <img alt='card background' src={require('../../images/icons/vader.svg')} />
+      <img name="people" alt='card background' src={require('../../images/icons/vader.svg')} />
       People
     </button>
   )
@@ -25,7 +25,7 @@ export const PlanetsBtn = ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="planets"
       onClick={ setActive }>
-      <img alt='card background' src={require('../../images/icons/death-star.svg')} />
+      <img name="planets" alt='card background' src={require('../../images/icons/death-star.svg')} />
       Planets
     </button>
   )
@@ -40,7 +40,7 @@ export const VehiclesBtn = ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="vehicles"
       onClick={ setActive }>
-      <img alt='card background' src={require('../../images/icons/tie-fighter.svg')} />
+      <img name="vehicles" alt='card background' src={require('../../images/icons/tie-fighter.svg')} />
       Vehicles
     </button>
   )
@@ -56,7 +56,7 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
       name="favorites"
       disabled={ !favoriteCount > 0 ? true : false }>
       { !favoriteCount > 0 ? 'No favorites' : 'Favorites' }
-      { favoriteCount > 0 && (<span className="fav-total">{ favoriteCount }</span>) }
+      { favoriteCount > 0 && (<span id="favorites" className="fav-total">{ favoriteCount }</span>) }
     </button>
   )
 
@@ -120,6 +120,11 @@ export class FavoriteCardBtn extends Component {
       </button>
     )
   } 
+}
+
+
+export const ShowMoreBtn = ({ fetchMore }) => {
+
 }
 
 PeopleBtn.propTypes = {

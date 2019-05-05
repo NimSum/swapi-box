@@ -1,16 +1,17 @@
 header {
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 20px 0 0 0;
   color: $star-wars-font-color;
   font-family: $content-font;
+  height: 20vh;
 
   h2 {
-    width: 150px;
+    height: 15vh;
     padding-top: 10px;
-    margin: 10px auto ;
+    margin: 0 auto ;
   }
 
   img {
-    width: 18%;
+    height: 14vh;
   }
 }

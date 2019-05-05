@@ -87,6 +87,7 @@ exports[`Buttons ViewFavorites Button: Should match snapshot taken 1`] = `
   Favorites
   <span
     className="fav-total"
+    id="favorites"
   >
     1
   </span>

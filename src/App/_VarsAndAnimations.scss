@@ -3,23 +3,18 @@ $content-font: 'Roboto', sans-serif;
 $title-font: 'Changa', sans-serif;
 
 $active-btn: #eeeeee;
-$button-color-primary: hsl(177, 60%, 66%);
-$button-color-secondary: hsl(0, 31%, 57%);
 $btn-active-fav: #f08a5d;
-
-
-$container-bgc-primary: hsl(115, 34%, 81%);
-$container-bgc-secondary: hsl(115, 34%, 81%);
 
 $star-wars-font-color: hsl(52, 97%, 58%);
 $font-light: #f08a5d;
 $font-dark:#222831;
 $font-card-title-color: hsl(52, 97%, 58%);
-$font-card-desc-color: hsla(183, 100%, 35%, .8);
+$font-card-desc-color: hsla(183, 100%, 35%, .6);
 
 $card-title-border-color: hsla(0, 0%, 93%, .5);
 $card-shadow: 0px 0px 20px hsla(0, 0%, 100%, .3);
 $card-bg-opacity: hsla(343, 51%, 48%, .7);
+$btn-section-bg: hsla(295, 44%, 31%, .5);
 
 @keyframes crawl {
   0% {

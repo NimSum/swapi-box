@@ -13,7 +13,8 @@ class App extends Component {
       loading: false,
       categorySelected: 'home',
       renderCards: [],
-      favoriteCount: 0
+      favoriteCount: 0,
+      currentPage: 1
     }
   }
 
@@ -85,6 +86,10 @@ class App extends Component {
         this.setState({ renderCards })
         return renderCards;
       })).catch(error => console.log(error));
+
+  fetchMore = () => {
+    // console.log()
+  }
 
   render() {
     return (
