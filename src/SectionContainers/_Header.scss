@@ -2,6 +2,12 @@ header {
   margin: 0;
   padding: 20px 0;
   color: $star-wars-font-color;
+  font-family: $content-font;
+
+
+  h2 {
+    margin-top: 20px;
+  }
   img {
     width: 300px;
     height: 100px;

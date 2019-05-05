@@ -20,9 +20,6 @@ export class CategoryBtnSection extends Component {
 
     return (
       <section className="categories-btn-container">
-        < HomeBtn 
-          setActive={ this.setActiveBtn }
-          activeBtn={ activeBtn } />
         <div className="btn-container">
           < PlanetsBtn 
             setActive={ this.setActiveBtn }
@@ -34,6 +31,9 @@ export class CategoryBtnSection extends Component {
             setActive={ this.setActiveBtn }
             activeBtn={ activeBtn } />
         </div>
+        < HomeBtn 
+          setActive={ this.setActiveBtn }
+          activeBtn={ activeBtn } />
         < ViewFavoritesBtn 
             setActive={ this.setActiveBtn }
             activeBtn={ activeBtn } 

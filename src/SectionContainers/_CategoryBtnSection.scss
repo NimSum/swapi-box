@@ -3,16 +3,14 @@ section.categories-btn-container {
   bottom: 0;
   width: 100%;
   padding: 20px; 
+  height: 17vh;
+  border: 1px dashed white;
 
   div.btn-container {
-    width: 30%;
+    width: 50%;
     margin: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
-    button {
-      width: 150px;
-      font-size: 2rem;
-    }
   }
 }

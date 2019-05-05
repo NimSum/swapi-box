@@ -10,7 +10,8 @@ class App extends Component {
     super();
     this.state = {
       selectedMovie: {},
-      loading: false,
+      loading: true,
+      loadingCards: false,
       categorySelected: '',
       renderCards: [],
       favoriteCount: 0
@@ -20,9 +21,11 @@ class App extends Component {
   componentDidMount() {
     const randomMovieId = Math.floor(Math.random() * 7) + 1;
     this.updateFavoriteCount();
-    fetchRandomMovie(randomMovieId)
-      .then(film => this.setState({ selectedMovie: film }))
+    setTimeout(() => 
+      fetchRandomMovie(randomMovieId)
+      .then(film => this.setState({ selectedMovie: film, loading: false }))
       .catch(error => console.log(error) )
+      , 100)
   }
 
   updateFavoriteCount = () => {
@@ -32,11 +35,11 @@ class App extends Component {
 
   renderFavorites = () => {
     const renderCards = JSON.parse(localStorage.getItem('favorites')) || [];
-    renderCards.length && this.setState({ renderCards })
+    renderCards.length && this.setState({ renderCards, loadingCards: false })
   }
 
   changeCategory = category => {
-    this.setState({ categorySelected: category, renderCards: [] });
+    this.setState({ categorySelected: category, renderCards: [], loadingCards: true });
     category === 'people' && this.fetchPeople();
     category === 'planets' && this.fetchPlanets();
     category === 'vehicles' && this.fetchVehicles();
@@ -55,11 +58,11 @@ class App extends Component {
             .then(characterInfo => {
               const card = { ...characterInfo[0], ...characterInfo[1] , ...person, id: uuidv4(), type: 'character' }
               const renderCards = [ ...this.state.renderCards, card ];
-              this.setState({ renderCards })
+              this.setState({ renderCards, loadingCards: false })
               return renderCards;
             });
         })
-      );
+      ).catch(error => console.log(error));
 
   fetchPlanets = () => 
     fetchCategory('planets')
@@ -71,28 +74,29 @@ class App extends Component {
           .then(names => {
             const card = ({ residentNames: names, ...planet, id: uuidv4(), type: 'planet' })
             const renderCards = [...this.state.renderCards, card]
-            this.setState({ renderCards })
+            this.setState({ renderCards, loadingCards: false })
             return renderCards;
           })
-      }))
+      })).catch(error => console.log(error));
 
   fetchVehicles = () => 
     fetchCategory('vehicles')
       .then(vehicles => vehicles.map(vehicle => {
         const vehicleCard = { ...vehicle, id: uuidv4(), type: 'vehicle' }
         const renderCards = [...this.state.renderCards, vehicleCard ]
-        this.setState({ renderCards })
+        this.setState({ renderCards, loadingCards: false })
         return renderCards;
-      }));
+      })).catch(error => console.log(error));
 
   render() {
     return (
       <div className="App">
-        < Header />
+        < Header category={ this.state.categorySelected }/>
         < CardContainer 
+          loading= { this.state.loading }
+          loadingCards= { this.state.loadingCards }
           movie = { this.state.selectedMovie }
           cards={ this.state.renderCards }
-          category={ this.state.categorySelected }
           updateFavoriteCount={ this.updateFavoriteCount } />
         < CategoryBtnSection 
           changeCategory={ this.changeCategory }

@@ -1,15 +1,57 @@
 button.active-fav {
-  background-color: $btn-active-fav;
+  background-color: $btn-active-fav !important;
 }
 
 button.favorite-card-btn {
   -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
   clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
   border: 0;
-  height: 25px;
+  height: 30px;
+  position: relative;
   width: 60%;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  background-color: hsla(0, 0%, 100%, .7);
+
+  img {
+    width: 20px;
+  }
 }
 
 button {
   cursor: pointer;
+  font-family: $title-font;
+  font-weight: light;
+
+  img {
+    width: 25px;
+  }
+}
+
+button.category-btn {
+  font-size: 2rem;
+  margin: 10px;
+  padding: 4px 10px;
+  border-radius: 10px;
+
+  img {
+    display: block;
+    margin: auto;
+  }
+}
+
+button.active {
+  background-color: $active-btn;
+}
+
+button.view-fav-btn {
+  position: absolute;
+  right: 20%;
+  
+}
+
+button.home-btn {
+  position: absolute;
+  left: 20%;
 }

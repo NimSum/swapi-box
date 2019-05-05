@@ -10,6 +10,7 @@ export const PeopleBtn= ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="people"
       onClick={ setActive }>
+      <img alt='card background' src={require('../../images/icons/vader.svg')} />
       People
     </button>
   )
@@ -24,6 +25,7 @@ export const PlanetsBtn = ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="planets"
       onClick={ setActive }>
+      <img alt='card background' src={require('../../images/icons/death-star.svg')} />
       Planets
     </button>
   )
@@ -38,6 +40,7 @@ export const VehiclesBtn = ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="vehicles"
       onClick={ setActive }>
+      <img alt='card background' src={require('../../images/icons/tie-fighter.svg')} />
       Vehicles
     </button>
   )
@@ -47,13 +50,15 @@ export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     <button 
       type="button"
       className={`${activeBtn === "favorites" 
-        ? "active-fav category-btn"
-        : "category-btn"}`}
+        ? "active-fav view-fav-btn"
+        : "view-fav-btn"}`}
       onClick={ setActive }
       name="favorites"
       disabled={ !favoriteCount > 0 ? true : false }>
+      <img alt='card background' src={require('../../images/icons/empire.png')} />
       { !favoriteCount > 0 ? 'No favorites' : 'Favorites' }
       { favoriteCount > 0 && (<span className="fav-total">{ favoriteCount }</span>) }
+      <img alt='card background' src={require('../../images/icons/rebel-alliance.png')} />
     </button>
   )
 
@@ -108,8 +113,12 @@ export class FavoriteCardBtn extends Component {
       <button 
         className={this.state.active ? 'active-fav favorite-card-btn' : 'favorite-card-btn'}
         name="favorite-card"
+        title="Add to Favorites"
+        type="button"
         onClick={this.toggleFavorite}>
-        Favorite Btn(IMG)
+        <img alt='card background' src={require('../../images/icons/empire.png')} />
+        <img alt='card background' src={require(`../../images/icons/${this.state.active ? 'active-star.svg' : 'inactive-star.svg'}`)} />
+        <img alt='card background' src={require('../../images/icons/rebel-alliance.png')} />
       </button>
     )
   } 

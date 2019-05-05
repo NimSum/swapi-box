@@ -2,8 +2,9 @@
 
 exports[`Header Should match snapshot 1`] = `
 <header>
-  <h1>
-    Star Wars
-  </h1>
+  <img
+    alt="Star Wars Title"
+    src="star-wars-title.png"
+  />
 </header>
 `;
