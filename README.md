@@ -1,7 +1,7 @@
 # Star Wars API(SWAPI) Box Project
 
 A page created for anyone who is interested into learning more about the Star Wars Universe
-gh-pages: https://nimsum.github.io/swapi-box/
+#### gh-pages: https://nimsum.github.io/swapi-box/
 
 ### Features
 - Random star wars crawl selected on page load
