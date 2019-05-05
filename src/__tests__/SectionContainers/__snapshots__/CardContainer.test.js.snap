@@ -1,28 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card Container Should match snapshot taken 1`] = `
+<div
+  className="crawl-container"
+>
+  <Crawl
+    releaseYear="2019-04-30"
+    subTitle="Lorem Ipsum Awakens"
+    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget volutpat risus. Quisque luctus dictum pellentesque."
+    title="Episode V"
+  />
+</div>
+`;
+
+exports[`Card Container Should render bb8 if fetch is not done 1`] = `
 <section
   className="card-container"
 >
-  <VehicleCard
+  <PlanetCard
     card={
       Object {
-        "card": "one",
         "id": 1,
+        "type": "planet",
       }
     }
     key="1"
-    updateFavoriteCount={[MockFunction]}
   />
   <VehicleCard
     card={
       Object {
-        "card": "two",
         "id": 2,
+        "type": "vehicle",
       }
     }
     key="2"
-    updateFavoriteCount={[MockFunction]}
   />
+  <VehicleCard
+    card={
+      Object {
+        "id": 2,
+        "type": "people",
+      }
+    }
+    key="2"
+  />
+  <ShowMoreLessBtns />
+</section>
+`;
+
+exports[`Card Container Should render opening crawl once fetch is done 1`] = `
+<div
+  className="bb8-container"
+>
+  <Bb8LoadingIcon />
+</div>
+`;
+
+exports[`Card Container Should render render cards when category is changed 1`] = `
+<section
+  className="card-container"
+>
+  <PlanetCard
+    card={
+      Object {
+        "id": 1,
+        "type": "planet",
+      }
+    }
+    key="1"
+  />
+  <VehicleCard
+    card={
+      Object {
+        "id": 2,
+        "type": "vehicle",
+      }
+    }
+    key="2"
+  />
+  <VehicleCard
+    card={
+      Object {
+        "id": 2,
+        "type": "people",
+      }
+    }
+    key="2"
+  />
+  <ShowMoreLessBtns />
 </section>
 `;

@@ -38,7 +38,8 @@ describe('App component', () => {
       loading: true,
       categorySelected: 'home',
       renderCards: [],
-      favoriteCount: 0
+      favoriteCount: 0,
+      currentPage: 1,
     }
     expect(wrapper.state()).toEqual(mockState);
   });
@@ -64,19 +65,60 @@ describe('App component', () => {
       wrapper.instance().changeCategory('people');
       expect(wrapper.state().categorySelected).toEqual('people');
       expect(fetchPeopleSpy).toHaveBeenCalledTimes(1);
+      expect(fetchMethods.fetchCategory).toHaveBeenCalledWith('people');
     });
   
     it('Should trigger fetch vehicle cards and change category to vehicles', () => {
       wrapper.instance().changeCategory('vehicles');
       expect(wrapper.state().categorySelected).toEqual('vehicles');
       expect(fetchVehiclesSpy).toHaveBeenCalledTimes(1);
+      expect(fetchMethods.fetchCategory).toHaveBeenCalledWith('vehicles');
     });
   
     it('Should trigger fetch planet cards and change category to planets', () => {
       wrapper.instance().changeCategory('planets');
       expect(wrapper.state().categorySelected).toEqual('planets');
       expect(fetchPlanetsSpy).toHaveBeenCalledTimes(1);
+      expect(fetchMethods.fetchCategory).toHaveBeenCalledWith('planets');
     });
+
+    it('Should fetch more people', () => {
+      wrapper.state().categorySelected = 'people';
+      wrapper.instance().showMore();
+      expect(wrapper.state().currentPage).toEqual(2);
+      expect(setStateSpy).toHaveBeenCalledTimes(1);
+      expect(fetchPeopleSpy).toHaveBeenCalledWith(true);
+    })
+
+    it('Should fetch more planets', () => {
+      wrapper.state().categorySelected = 'planets';
+      wrapper.instance().showMore();
+      expect(wrapper.state().currentPage).toEqual(2);
+      expect(setStateSpy).toHaveBeenCalledTimes(1);
+      expect(fetchPlanetsSpy).toHaveBeenCalledWith(true);
+    })
+
+    it('Should fetch more people', () => {
+      wrapper.state().categorySelected = 'vehicles';
+      wrapper.instance().showMore();
+      expect(wrapper.state().currentPage).toEqual(2);
+      expect(setStateSpy).toHaveBeenCalledTimes(1);
+      expect(fetchVehiclesSpy).toHaveBeenCalledWith(true);
+    })
+
+    it('Should be able to show less cards', () => {
+      const mockState = { 
+        currentPage : 2, 
+        renderCards: [ 
+          {}, {}, {} ,{}, {},
+          {}, {}, {} ,{}, {},
+          {}, {}, {} ,{}, {},
+          {}, {}, {} ,{}, {}, ] }
+      wrapper.setState(mockState)
+      wrapper.instance().showLess();
+      expect(setStateSpy).toHaveBeenCalledTimes(2);
+      expect(wrapper.state().renderCards).toHaveLength(10);
+    })
   
     it('Should trigger render favorited cards and change category to favorites', () => {
       wrapper.instance().changeCategory('favorites');
@@ -107,7 +149,7 @@ describe('App component', () => {
     });
 
     it('Should fetch vehicles', () => {
-      const mockResponse = { results: [{ name: 'blah'}]};
+      const mockResponse = { results: [{ name: 'TESLA'}]};
       window.fetch = localFetch(mockResponse);
       wrapper.instance().fetchVehicles()
         .then(result => expect(setStateSpy).toHaveBeenCalledTimes(1));

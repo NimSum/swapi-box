@@ -26,7 +26,7 @@ describe('Character card', () => {
     )
   })
 
-  it('Should match snapshot with card passed in', () => {
+  it.skip('Should match snapshot with card passed in', () => {
     expect(wrapper).toMatchSnapshot();
   })
 

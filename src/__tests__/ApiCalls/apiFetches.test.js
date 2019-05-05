@@ -39,7 +39,7 @@ describe('Api Fetches', () => {
 
   describe('Fetch category', () => {
     const mockCategory = 'people';
-    const mockCategoryUrl = 'https://swapi.co/api/people/';
+    const mockCategoryUrl = 'https://swapi.co/api/people';
     const mockCategoryResult = {
       results: [
         { name: "Luke Skywalker" },

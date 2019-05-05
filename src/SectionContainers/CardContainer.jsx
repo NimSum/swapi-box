@@ -63,5 +63,6 @@ CardContainer.propTypes = {
   cards: PropTypes.array,
   updateFavoriteCount: PropTypes.func,
   showMore: PropTypes.func,
-  showLess: PropTypes.func
+  showLess: PropTypes.func,
+  currentPage: PropTypes.number
 }
