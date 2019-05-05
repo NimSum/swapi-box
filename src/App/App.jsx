@@ -13,7 +13,8 @@ class App extends Component {
       loading: false,
       categorySelected: 'home',
       renderCards: [],
-      favoriteCount: 0
+      favoriteCount: 0,
+      currentPage: 1
     }
   }
 
@@ -37,15 +38,15 @@ class App extends Component {
   }
 
   changeCategory = category => {
-    this.setState({ categorySelected: category, renderCards: [] });
+    this.setState({ categorySelected: category, renderCards: [], currentPage: 1 });
     category === 'people' && this.fetchPeople();
     category === 'planets' && this.fetchPlanets();
     category === 'vehicles' && this.fetchVehicles();
     category === 'favorites' && this.renderFavorites();
   }
 
-  fetchPeople = () => 
-    fetchCategory('people')
+  fetchPeople = (more) => 
+    fetchCategory(`${ more ? `people/?page=${ this.state.currentPage }` : 'people' }`)
       .then(people => 
         people.map(person => {
           const homeworldInfo = fetchItem(person.homeworld)
@@ -62,8 +63,8 @@ class App extends Component {
         })
       ).catch(error => console.log(error));
 
-  fetchPlanets = () => 
-    fetchCategory('planets')
+  fetchPlanets = (more) => 
+    fetchCategory(`${ more ? `planets/?page=${ this.state.currentPage }` : 'planets' }`)
       .then(planets => planets.map(planet => {
         const names = planet.residents.map(resident => 
           fetchItem(resident)
@@ -77,14 +78,30 @@ class App extends Component {
           })
       })).catch(error => console.log(error));
 
-  fetchVehicles = () => 
-    fetchCategory('vehicles')
+  fetchVehicles = (more) => 
+    fetchCategory(`${ more ? `vehicles/?page=${ this.state.currentPage }` : 'vehicles' }`)
       .then(vehicles => vehicles.map(vehicle => {
         const vehicleCard = { ...vehicle, id: uuidv4(), type: 'vehicle' }
         const renderCards = [...this.state.renderCards, vehicleCard ]
         this.setState({ renderCards })
         return renderCards;
       })).catch(error => console.log(error));
+
+  showMore = () => {
+    this.setState({ currentPage: this.state.currentPage + 1 }, () => {
+      const category = this.state.categorySelected;
+      category === 'people' && this.fetchPeople(true);
+      category === 'planets' && this.fetchPlanets(true);
+      category === 'vehicles' && this.fetchVehicles(true);
+    })
+  }
+
+  showLess = () => {
+    this.setState({ currentPage: this.state.currentPage - 1 }, () => {
+      const reducedCards = [...this.state.renderCards].slice(0, this.state.renderCards.length - 10);
+      this.setState({ renderCards: reducedCards })
+    })
+  }
 
   render() {
     return (
@@ -95,7 +112,10 @@ class App extends Component {
           movie = { this.state.selectedMovie }
           cards={ this.state.renderCards }
           updateFavoriteCount={ this.updateFavoriteCount } 
-          category={ this.state.categorySelected } />
+          category={ this.state.categorySelected } 
+          showMore={ this.showMore } 
+          showLess={ this.showLess }
+          currentPage={ this.state.currentPage } />
         < CategoryBtnSection 
           currCategory={ this.state.categorySelected }
           changeCategory={ this.changeCategory }

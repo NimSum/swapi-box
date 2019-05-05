@@ -5,8 +5,9 @@ import { CharacterCard } from '../components/Cards/CharacterCard';
 import { PlanetCard } from '../components/Cards/PlanetCard';
 import { VehicleCard } from '../components/Cards/VehicleCard';
 import { Bb8LoadingIcon } from '../components/loading_indicator/Icons';
+import { ShowMoreLessBtns } from '../components/Buttons/Buttons';
 
-export const CardContainer = ({ movie, loading, category, cards, updateFavoriteCount }) => {
+export const CardContainer = ({ movie, loading, category, cards, updateFavoriteCount, showMore, showLess, currentPage }) => {
   const { opening_crawl, title, release_date, episode_id } = movie;
   const romanNumeral = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VII'];
 
@@ -36,8 +37,18 @@ export const CardContainer = ({ movie, loading, category, cards, updateFavoriteC
     return result;
   });
 
+  const showMoreLessBtns = (
+    < ShowMoreLessBtns 
+      showMore={ showMore }
+      showLess={ showLess }
+      currentPage= { currentPage } />
+  )
+
   const cardsContainer = cards.length 
-    ? (<section className="card-container">{ cardElements }</section>)
+    ? (<section className="card-container">
+        { cardElements } 
+        { category !== 'favorites' && showMoreLessBtns }
+      </section>)
     : (<div className="bb8-container">< Bb8LoadingIcon /></div>)
 
   return category === 'home'
@@ -50,5 +61,7 @@ CardContainer.propTypes = {
   loading: PropTypes.bool,
   loadingCards: PropTypes.bool,
   cards: PropTypes.array,
-  updateFavoriteCount: PropTypes.func
+  updateFavoriteCount: PropTypes.func,
+  showMore: PropTypes.func,
+  showLess: PropTypes.func
 }

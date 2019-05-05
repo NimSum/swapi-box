@@ -122,6 +122,15 @@ export class FavoriteCardBtn extends Component {
   } 
 }
 
+
+export const ShowMoreLessBtns = ({ showMore, showLess, currentPage }) => (
+  <div className="more-less-btns">
+    <button name="show-more" onClick={ showMore }>Show More</button>
+    { currentPage > 1 
+        && (<button name="show-less" onClick={ showLess }>Show Less</button>) }
+  </div>
+)
+
 PeopleBtn.propTypes = {
   setActive: PropTypes.func,
   activeBtn: PropTypes.string
@@ -145,4 +154,9 @@ HomeBtn.propTypes = {
 }
 FavoriteCardBtn.propTypes = {
   card: PropTypes.object
+}
+ShowMoreLessBtns.propTypes = {
+  showMore: PropTypes.func,
+  showLess: PropTypes.func,
+  currentPage: PropTypes.number
 }
