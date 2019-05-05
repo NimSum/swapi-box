@@ -122,11 +122,6 @@ export class FavoriteCardBtn extends Component {
   } 
 }
 
-
-export const ShowMoreBtn = ({ fetchMore }) => {
-
-}
-
 PeopleBtn.propTypes = {
   setActive: PropTypes.func,
   activeBtn: PropTypes.string

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FavoriteCardBtn } from '../Buttons/Buttons';
 import PropTypes from 'prop-types';
+const uuidv4 = require('uuid/v4');
 
 export const PlanetCard = ({ card, updateFavoriteCount }) => {
   return (
@@ -11,7 +12,7 @@ export const PlanetCard = ({ card, updateFavoriteCount }) => {
       <h3>{ card.name }</h3>
       <div className="terrain-container">
         <h4>Terrain:</h4>
-        { card.terrain.split(',').map(terrain => (<p>{ terrain }</p>)) }
+        { card.terrain.split(',').map(terrain => (<p key={ uuidv4() }>{ terrain }</p>)) }
       </div>
       <h4>Climate:</h4>
       <p>{ card.climate }</p>  
