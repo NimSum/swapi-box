@@ -49,8 +49,8 @@ export const VehiclesBtn = ({ setActive, activeBtn }) => {
 export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     <button 
       type="button"
-      className={`${activeBtn === "favorites" 
-        ? "active-fav view-fav-btn"
+      className={`${ activeBtn === "favorites" 
+        ? "active view-fav-btn"
         : "view-fav-btn"}`}
       onClick={ setActive }
       name="favorites"
@@ -64,7 +64,7 @@ export const HomeBtn = ({ setActive, activeBtn }) => {
   return (
     <button 
       type="button"
-      className={ activeBtn ? 'active-home home-btn' : 'home-btn' }
+      className={ activeBtn === 'home' ? 'active home-btn' : 'home-btn' }
       name="home"
       onClick={ setActive } >
       Home

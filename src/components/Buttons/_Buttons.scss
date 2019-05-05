@@ -12,7 +12,7 @@ button.favorite-card-btn {
   display: flex;
   margin: auto;
   justify-content: space-around;
-  background-color: hsla(0, 0%, 93%, .5);
+  background-color: hsl(0, 0%, 93%);
 
   img {
     width: 20px;
@@ -34,6 +34,9 @@ button {
 }
 
 button.category-btn {
+  background-color: #00adb5;
+  border-color: active-btn;
+  
   img {
     display: block;
     margin: auto;
@@ -41,13 +44,14 @@ button.category-btn {
 }
 
 button.active {
-  background-color: $active-btn;
+  background-color: $active-btn !important;
 }
 
 button.view-fav-btn {
   position: absolute;
   bottom: 10px;
   right: 10%;
+  background-color: #00adb5;
 
   span.fav-total {
     background-color: #000;
@@ -60,6 +64,7 @@ button.view-fav-btn {
 }
 
 button.home-btn {
+  background-color: #00adb5;
   position: absolute;
   left: 10%;
   bottom: 10px;

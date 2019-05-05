@@ -33,7 +33,7 @@ export class CategoryBtnSection extends Component {
         </div>
         < HomeBtn 
           setActive={ this.setActiveBtn }
-          activeBtn={ activeBtn } />
+          activeBtn={ this.props.currCategory } />
         < ViewFavoritesBtn 
             setActive={ this.setActiveBtn }
             activeBtn={ activeBtn } 

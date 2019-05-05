@@ -3,7 +3,6 @@ import { FavoriteCardBtn } from '../Buttons/Buttons';
 import PropTypes from 'prop-types';
 
 export const PlanetCard = ({ card, updateFavoriteCount }) => {
-  const randomBgNum = Math.floor(Math.random() * 7) + 1;
   return (
     <article key={ card.id } className="planet-card">
       < FavoriteCardBtn  
@@ -25,7 +24,7 @@ export const PlanetCard = ({ card, updateFavoriteCount }) => {
             <p key={person.id}>{ person.name }</p>))
           : (<p>None</p>) }
       </div>
-      <img className="bg-img" alt='card background' src={require(`../../images/card-backgrounds/planet-${randomBgNum}.png`)} />
+      <img className="bg-img" alt='card background' src={require(`../../images/card-backgrounds/planet-${ card.imgNum }.png`)} />
     </article>
   )
 }

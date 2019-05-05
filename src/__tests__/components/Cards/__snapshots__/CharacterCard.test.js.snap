@@ -63,8 +63,11 @@ exports[`Character card Should match snapshot with card passed in 1`] = `
       Nimsumm
     </h3>
     <h4>
-      Human
+       Species: 
     </h4>
+    <p>
+      Human
+    </p>
     <div
       className="home-planet"
     >

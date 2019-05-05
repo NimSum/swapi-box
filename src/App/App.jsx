@@ -70,7 +70,7 @@ class App extends Component {
             .then(person => ({ name: person.name, id: uuidv4() })));
         return Promise.all(names)
           .then(names => {
-            const card = ({ residentNames: names, ...planet, id: uuidv4(), type: 'planet' })
+            const card = ({ residentNames: names, ...planet, id: uuidv4(), type: 'planet', imgNum: Math.floor(Math.random() * 7) + 1 })
             const renderCards = [...this.state.renderCards, card]
             this.setState({ renderCards })
             return renderCards;
@@ -97,6 +97,7 @@ class App extends Component {
           updateFavoriteCount={ this.updateFavoriteCount } 
           category={ this.state.categorySelected } />
         < CategoryBtnSection 
+          currCategory={ this.state.categorySelected }
           changeCategory={ this.changeCategory }
           favoriteCount={ this.state.favoriteCount }
           updateFavoriteCount={ this.props.updateFavoriteCount } />

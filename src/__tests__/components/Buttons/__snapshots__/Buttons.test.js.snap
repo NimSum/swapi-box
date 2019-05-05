@@ -66,7 +66,7 @@ exports[`Buttons Favorite Card Button Should be disabled/enabled if active state
 
 exports[`Buttons ViewFavorites Button: Should be disabled with favorite count set to 0 1`] = `
 <button
-  className="active-fav view-fav-btn"
+  className="active view-fav-btn"
   disabled={true}
   name="favorites"
   onClick={[MockFunction]}
@@ -78,7 +78,7 @@ exports[`Buttons ViewFavorites Button: Should be disabled with favorite count se
 
 exports[`Buttons ViewFavorites Button: Should match snapshot taken 1`] = `
 <button
-  className="active-fav view-fav-btn"
+  className="active view-fav-btn"
   disabled={false}
   name="favorites"
   onClick={[MockFunction]}

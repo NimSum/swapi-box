@@ -19,7 +19,7 @@ section.card-container {
     }
     
     h4 {
-      color: #f08a5d;
+      color: hsl(52, 97%, 58%);
       font-size: 1.3rem;
     }
 
@@ -73,8 +73,7 @@ section.card-container {
   }
 
   article.vehicle-card {
-    min-height: 300px;
-    max-height: 350px;
+    max-height: 400px;
     img.bg-img {
       width: 100%;
       left: 0;
