@@ -5,8 +5,30 @@ exports[`Buttons Favorite Card Button Should be disabled/enabled if active state
   className="favorite-card-btn"
   name="favorite-card"
   onClick={[Function]}
+  title="Add to Favorites"
+  type="button"
 >
-  Favorite Btn(IMG)
+  <img
+    alt="card background"
+    src="empire.png"
+  />
+  <img
+    alt="card background"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "inactive-star.svg",
+      }
+    }
+  />
+  <img
+    alt="card background"
+    src="rebel-alliance.png"
+  />
 </button>
 `;
 
@@ -15,14 +37,36 @@ exports[`Buttons Favorite Card Button Should be disabled/enabled if active state
   className="active-fav favorite-card-btn"
   name="favorite-card"
   onClick={[MockFunction]}
+  title="Add to Favorites"
+  type="button"
 >
-  Favorite Btn(IMG)
+  <img
+    alt="card background"
+    src="empire.png"
+  />
+  <img
+    alt="card background"
+    src={
+      Object {
+        "ReactComponent": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "__esModule": true,
+        "default": "active-star.svg",
+      }
+    }
+  />
+  <img
+    alt="card background"
+    src="rebel-alliance.png"
+  />
 </button>
 `;
 
 exports[`Buttons ViewFavorites Button: Should be disabled with favorite count set to 0 1`] = `
 <button
-  className="active-fav category-btn"
+  className="active view-fav-btn"
   disabled={true}
   name="favorites"
   onClick={[MockFunction]}
@@ -34,7 +78,7 @@ exports[`Buttons ViewFavorites Button: Should be disabled with favorite count se
 
 exports[`Buttons ViewFavorites Button: Should match snapshot taken 1`] = `
 <button
-  className="active-fav category-btn"
+  className="active view-fav-btn"
   disabled={false}
   name="favorites"
   onClick={[MockFunction]}
@@ -43,6 +87,7 @@ exports[`Buttons ViewFavorites Button: Should match snapshot taken 1`] = `
   Favorites
   <span
     className="fav-total"
+    id="favorites"
   >
     1
   </span>

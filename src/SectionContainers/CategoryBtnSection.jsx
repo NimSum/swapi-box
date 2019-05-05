@@ -11,8 +11,9 @@ export class CategoryBtnSection extends Component {
   }
 
   setActiveBtn = e => {
-    this.setState({ activeBtn: e.target.name });
-    this.props.changeCategory(e.target.name);
+    const value = e.target.name ? e.target.name : e.target.id;
+    this.setState({ activeBtn: value });
+    this.props.changeCategory(value);
   }
 
   render() {
@@ -20,9 +21,6 @@ export class CategoryBtnSection extends Component {
 
     return (
       <section className="categories-btn-container">
-        < HomeBtn 
-          setActive={ this.setActiveBtn }
-          activeBtn={ activeBtn } />
         <div className="btn-container">
           < PlanetsBtn 
             setActive={ this.setActiveBtn }
@@ -34,6 +32,9 @@ export class CategoryBtnSection extends Component {
             setActive={ this.setActiveBtn }
             activeBtn={ activeBtn } />
         </div>
+        < HomeBtn 
+          setActive={ this.setActiveBtn }
+          activeBtn={ this.props.currCategory } />
         < ViewFavoritesBtn 
             setActive={ this.setActiveBtn }
             activeBtn={ activeBtn } 

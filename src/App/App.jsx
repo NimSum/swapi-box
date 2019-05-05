@@ -11,18 +11,20 @@ class App extends Component {
     this.state = {
       selectedMovie: {},
       loading: false,
-      categorySelected: '',
+      categorySelected: 'home',
       renderCards: [],
-      favoriteCount: 0
+      favoriteCount: 0,
+      currentPage: 1
     }
   }
 
   componentDidMount() {
     const randomMovieId = Math.floor(Math.random() * 7) + 1;
+    this.setState({ loading: true })
     this.updateFavoriteCount();
     fetchRandomMovie(randomMovieId)
-      .then(film => this.setState({ selectedMovie: film }))
-      .catch(error => console.log(error) )
+    .then(film => this.setState({ selectedMovie: film, loading: false }))
+    .catch(error => console.log(error) )
   }
 
   updateFavoriteCount = () => {
@@ -59,7 +61,7 @@ class App extends Component {
               return renderCards;
             });
         })
-      );
+      ).catch(error => console.log(error));
 
   fetchPlanets = () => 
     fetchCategory('planets')
@@ -69,12 +71,12 @@ class App extends Component {
             .then(person => ({ name: person.name, id: uuidv4() })));
         return Promise.all(names)
           .then(names => {
-            const card = ({ residentNames: names, ...planet, id: uuidv4(), type: 'planet' })
+            const card = ({ residentNames: names, ...planet, id: uuidv4(), type: 'planet', imgNum: Math.floor(Math.random() * 7) + 1 })
             const renderCards = [...this.state.renderCards, card]
             this.setState({ renderCards })
             return renderCards;
           })
-      }))
+      })).catch(error => console.log(error));
 
   fetchVehicles = () => 
     fetchCategory('vehicles')
@@ -83,18 +85,24 @@ class App extends Component {
         const renderCards = [...this.state.renderCards, vehicleCard ]
         this.setState({ renderCards })
         return renderCards;
-      }));
+      })).catch(error => console.log(error));
+
+  fetchMore = () => {
+    // console.log()
+  }
 
   render() {
     return (
       <div className="App">
-        < Header />
+        < Header category={ this.state.categorySelected }/>
         < CardContainer 
+          loading= { this.state.loading }
           movie = { this.state.selectedMovie }
           cards={ this.state.renderCards }
-          category={ this.state.categorySelected }
-          updateFavoriteCount={ this.updateFavoriteCount } />
+          updateFavoriteCount={ this.updateFavoriteCount } 
+          category={ this.state.categorySelected } />
         < CategoryBtnSection 
+          currCategory={ this.state.categorySelected }
           changeCategory={ this.changeCategory }
           favoriteCount={ this.state.favoriteCount }
           updateFavoriteCount={ this.props.updateFavoriteCount } />

@@ -1,9 +1,10 @@
 import React from 'react';
 
-export const Header = () => {
+export const Header = ({ category }) => {
   return (
     <header>
-      <h1>Star Wars</h1>
+      <img src={require('../images/star-wars-title.png')} alt="Star Wars Title"/>
+      { category === 'home' ? undefined : <h2>{ category.toUpperCase() }</h2>}
     </header>
   )
 }

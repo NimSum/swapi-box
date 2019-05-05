@@ -33,26 +33,61 @@ exports[`Character card Should match snapshot with card passed in 1`] = `
         className="favorite-card-btn"
         name="favorite-card"
         onClick={[Function]}
+        title="Add to Favorites"
+        type="button"
       >
-        Favorite Btn(IMG)
+        <img
+          alt="card background"
+          src="empire.png"
+        />
+        <img
+          alt="card background"
+          src={
+            Object {
+              "ReactComponent": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              },
+              "__esModule": true,
+              "default": "inactive-star.svg",
+            }
+          }
+        />
+        <img
+          alt="card background"
+          src="rebel-alliance.png"
+        />
       </button>
     </FavoriteCardBtn>
     <h3>
       Nimsumm
     </h3>
     <h4>
-      Human
+       Species: 
     </h4>
+    <p>
+      Human
+    </p>
     <div
       className="home-planet"
     >
       <h4>
-        Earth
+        Home Planet:
       </h4>
+      <p
+        className="world-name"
+      >
+        Earth
+      </p>
       <p>
         7500000000
       </p>
     </div>
+    <img
+      alt="card background"
+      className="bg-img"
+      src="character-bg.png"
+    />
   </article>
 </CharacterCard>
 `;

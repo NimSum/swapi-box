@@ -6,8 +6,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .App {
   text-align: center;
+  height: 100vh;
+  background: url('./images/stars-bg.jpg');
 }
 
 @keyframes crawl {

@@ -35,8 +35,8 @@ describe('App component', () => {
   it('Should have default states', () => {
     const mockState = {
       selectedMovie: {},
-      loading: false,
-      categorySelected: '',
+      loading: true,
+      categorySelected: 'home',
       renderCards: [],
       favoriteCount: 0
     }

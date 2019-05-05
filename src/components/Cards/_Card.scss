@@ -1,0 +1,100 @@
+section.card-container {
+  article {
+    border-radius: 20px;
+    width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    box-shadow: $card-shadow;
+    position: relative;
+    background-color: $card-bg-opacity;
+    padding-bottom: 10px;
+
+    h3, h4, div, button, p {
+      position: relative;
+      z-index: 1;
+    }
+
+    h4 {
+      font-family: $title-font;
+      margin: 5px;
+    }
+    
+    h4 {
+      color: hsl(52, 97%, 58%);
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      color: $font-card-title-color;
+      border-width: 2px 0 2px 0;
+      border-style: solid;
+      border-color: $card-title-border-color;
+      padding: 5px 0;
+      margin: 10px 0;
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-family: $content-font;
+      margin: 5px auto;
+      padding: 2px;
+      width: 50%;
+      color: $font-dark;
+      background-color: $font-card-desc-color;
+      border-radius: 10px;
+    }
+
+    img.bg-img {
+      position: absolute;
+      bottom: 0;
+      z-index: 0;
+      opacity: .1;
+    }
+  }
+
+
+  article.character-card {
+    max-height: 350px;
+
+    div.home-planet {
+      border-top: 2px solid $card-title-border-color;
+      width: 50%;
+      white-space: nowrap;
+      margin: auto;
+
+      p {
+        width: 100%;
+      }
+    }
+
+    img.bg-img {
+      width: 250px;
+      left: -45px;
+      opacity: .2;
+    }
+  }
+
+  article.vehicle-card {
+    max-height: 400px;
+
+    img.bg-img {
+      width: 100%;
+      left: 0;
+      opacity: .2;
+    }
+  }
+
+  article.planet-card {
+    min-height: 450px;
+    max-height: 600px;
+    overflow: scroll;
+
+    img.bg-img {
+      width: 90%;
+      top: 15%;
+      left: 0;
+      margin: 0 5%;
+      opacity: .3;
+    }
+  }
+}

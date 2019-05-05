@@ -10,6 +10,7 @@ export const PeopleBtn= ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="people"
       onClick={ setActive }>
+      <img name="people" alt='card background' src={require('../../images/icons/vader.svg')} />
       People
     </button>
   )
@@ -24,6 +25,7 @@ export const PlanetsBtn = ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="planets"
       onClick={ setActive }>
+      <img name="planets" alt='card background' src={require('../../images/icons/death-star.svg')} />
       Planets
     </button>
   )
@@ -38,6 +40,7 @@ export const VehiclesBtn = ({ setActive, activeBtn }) => {
         : "category-btn"}`}
       name="vehicles"
       onClick={ setActive }>
+      <img name="vehicles" alt='card background' src={require('../../images/icons/tie-fighter.svg')} />
       Vehicles
     </button>
   )
@@ -46,14 +49,14 @@ export const VehiclesBtn = ({ setActive, activeBtn }) => {
 export const ViewFavoritesBtn = ({ activeBtn, setActive, favoriteCount }) =>  (
     <button 
       type="button"
-      className={`${activeBtn === "favorites" 
-        ? "active-fav category-btn"
-        : "category-btn"}`}
+      className={`${ activeBtn === "favorites" 
+        ? "active view-fav-btn"
+        : "view-fav-btn"}`}
       onClick={ setActive }
       name="favorites"
       disabled={ !favoriteCount > 0 ? true : false }>
       { !favoriteCount > 0 ? 'No favorites' : 'Favorites' }
-      { favoriteCount > 0 && (<span className="fav-total">{ favoriteCount }</span>) }
+      { favoriteCount > 0 && (<span id="favorites" className="fav-total">{ favoriteCount }</span>) }
     </button>
   )
 
@@ -61,7 +64,7 @@ export const HomeBtn = ({ setActive, activeBtn }) => {
   return (
     <button 
       type="button"
-      className={ activeBtn ? 'active-home home-btn' : 'home-btn' }
+      className={ activeBtn === 'home' ? 'active home-btn' : 'home-btn' }
       name="home"
       onClick={ setActive } >
       Home
@@ -79,7 +82,7 @@ export class FavoriteCardBtn extends Component {
 
   componentDidMount() {
     const storedCopy = JSON.parse(localStorage.getItem('favorites')) || [];
-    storedCopy.forEach(card => card.url === this.props.card.url && this.setState({ active: true }));
+    storedCopy.forEach(card => card.name === this.props.card.name && this.setState({ active: true }));
   }
 
   saveCard = (storedCopy) => {
@@ -108,11 +111,20 @@ export class FavoriteCardBtn extends Component {
       <button 
         className={this.state.active ? 'active-fav favorite-card-btn' : 'favorite-card-btn'}
         name="favorite-card"
+        title="Add to Favorites"
+        type="button"
         onClick={this.toggleFavorite}>
-        Favorite Btn(IMG)
+        <img alt='card background' src={require('../../images/icons/empire.png')} />
+        <img alt='card background' src={require(`../../images/icons/${this.state.active ? 'active-star.svg' : 'inactive-star.svg'}`)} />
+        <img alt='card background' src={require('../../images/icons/rebel-alliance.png')} />
       </button>
     )
   } 
+}
+
+
+export const ShowMoreBtn = ({ fetchMore }) => {
+
 }
 
 PeopleBtn.propTypes = {

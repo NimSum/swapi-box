@@ -1,9 +1,17 @@
 header {
-  background-color: $container-bgc-primary;
-  margin: 0;
-  padding: 20px 0;
-  
-  h1 {
-    margin: 0;
+  margin: 0 0 10px 0;
+  padding: 20px 0 0 0;
+  color: $star-wars-font-color;
+  font-family: $content-font;
+  height: 20vh;
+
+  h2 {
+    height: 15vh;
+    padding-top: 10px;
+    margin: 0 auto ;
+  }
+
+  img {
+    height: 14vh;
   }
 }
