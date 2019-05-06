@@ -24,7 +24,8 @@ A page created for anyone who is interested into learning more about the Star Wa
 - UUID
 - PropTypes
 
-
+ ## WireFrame:
+ ![Wireframe](https://user-images.githubusercontent.com/22114952/57237266-14944a00-6fe4-11e9-9c5d-b1aebe66c8cd.png)
  ## Images:
  ![Home](https://user-images.githubusercontent.com/22114952/57200175-879ab380-6f45-11e9-90ef-9cfe90cc04d5.png)
  ![Planets](https://user-images.githubusercontent.com/22114952/57200176-8e292b00-6f45-11e9-9f42-6acbaa6a3b61.png)
