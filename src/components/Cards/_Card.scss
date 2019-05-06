@@ -25,6 +25,7 @@ section.card-container {
     }
 
     h3 {
+      font-family: $title-font;
       color: $font-card-title-color;
       border-width: 2px 0 2px 0;
       border-style: solid;
